@@ -21,7 +21,6 @@ __Front-end__
 - Run __npm install__ 
 - Run __npm run serve__ 
 - That's it: launch the URL that appears in the terminal - could be `http://localhost:8080`
-- Install some thing need to use like vue-time, vue-exce, it will be in your error while you running my code.
 
 ## License
 
