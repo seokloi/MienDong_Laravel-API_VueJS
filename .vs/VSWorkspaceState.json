@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\front",
+    "\\front\\src",
+    "\\front\\src\\views",
+    "\\front\\src\\views\\NhanVien",
+    "\\front\\src\\views\\User",
+    "\\laravel-api\\app",
+    "\\laravel-api\\app\\Http",
+    "\\laravel-api\\app\\Http\\Controllers",
+    "\\laravel-api\\app\\Http\\Controllers\\Api"
+  ],
+  "SelectedNode": "\\front\\src\\views\\Home.vue",
+  "PreviewInSolutionExplorer": false
+}
