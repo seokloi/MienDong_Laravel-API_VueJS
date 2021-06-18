@@ -10,14 +10,14 @@
 							<div class="booking-form">
 								<div class="row" v-if="ThanhToan == 0">
 									<div class="col-md-12">
-										<h3 class="lable-h">Miền Đông Station</h3>
+										<h3 class="lable-h">Mien Dong Station</h3>
 										<h5> {{ this.listChuyen.DiaDiem1 }} - {{ this.listChuyen.DiaDiem2 }}: Bến {{ this.listChuyen.BenXe }} </h5>
 										<h6> {{ this.listChuyen.ChuXe }} - {{ this.listChuyen.SDT }} - {{ this.listChuyen.Ngay | formatDay }} - {{ this.listChuyen.Gio }} - {{ this.listChuyen.GiaVe }} đ</h6>
 									</div>
 								</div>
 								<div class="row" v-else="">
 									<div class="col-md-12">
-										<h3 class="lable-h">Miền Đông Station</h3>
+										<h3 class="lable-h">Mien Dong Station</h3>
 									</div>
 								</div>
 								<div class="row" v-if="NhapThongTin == 0 && ThanhToan == 0">

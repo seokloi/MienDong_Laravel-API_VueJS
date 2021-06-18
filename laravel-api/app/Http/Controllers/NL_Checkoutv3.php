@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
   class NL_CheckOutV3
   {
 	  		
-	        public $url_api ='https://www.nganluong.vn/checkout.api.nganluong.post.php';  
-			public $merchant_id = '65102';
-			public $merchant_password = '7a0d37956e8fb395be2187af16f3365e';
-			public $receiver_email = 'trannguyenloi99@gmail.com';
-			public $cur_code = 'vnd';
+	        // public $url_api ='https://www.nganluong.vn/checkout.api.nganluong.post.php';  
+			// public $merchant_id = '65102';
+			// public $merchant_password = '7a0d37956e8fb395be2187af16f3365e';
+			// public $receiver_email = 'trannguyenloi99@gmail.com';
+			// public $cur_code = 'vnd';
 			
 			// public $url_api ='https://www.nganluong.vn/checkout.api.nganluong.post.php';  
 			// public $merchant_id = '65115';
@@ -17,11 +17,11 @@ namespace App\Http\Controllers;
 			// public $cur_code = 'vnd';
 
 			
-			// public $url_api ='https://www.nganluong.vn/checkout.api.nganluong.post.php';  
-			// public $merchant_id = '36680';
-			// public $merchant_password = 'matkhauketnoi';
-			// public $receiver_email = 'demo@nganluong.vn';
-			// public $cur_code = 'vnd';
+			public $url_api ='https://www.nganluong.vn/checkout.api.nganluong.post.php';  
+			public $merchant_id = '36680';
+			public $merchant_password = 'matkhauketnoi';
+			public $receiver_email = 'trannguyenloi99@gmail.com';
+			public $cur_code = 'vnd';
 
 			function __construct($merchant_id, $merchant_password, $receiver_email,$url_api)
 			{				

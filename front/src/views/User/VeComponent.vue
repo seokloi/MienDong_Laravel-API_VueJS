@@ -38,7 +38,7 @@
 								<td>{{ product.Code }}</td>
 								<td>{{ product.TienCoc }}</td>
 								<td>
-									<button class="btn btn-danger" @click="deleteProduct(product)">Hủy vé</button>
+									<button class="btn btn-danger" @click="deleteProduct(product)" v-if="product.TienCoc == 0">Hủy vé</button>
 								</td>
 							</tr>
 						</transition-group>
@@ -66,6 +66,7 @@
 				</div>
 				<p>
 					*Lưu ý:<br/>
+					- Đối với huỷ vé có tiền cọc, quý khách vui lòng liên hệ chăm sóc khách hàng để làm thủ tục huỷ vé.<br/>
 					- Quý khách trả vé mất 20% tiền cọc.<br/>
 					- Quý khách đến bến trước lúc khởi hành ít nhất 20 phút.<br/>
 					- Trước giờ xe khởi hành 30 phút, Công ty không chịu trách nhiệm hoàn trả số tiền đã đặt chỗ.

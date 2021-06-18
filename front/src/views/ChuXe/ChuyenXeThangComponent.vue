@@ -9,7 +9,7 @@
 							<br/>
 							<br/>
 							<p>
-								In vé Tháng <input type="month" v-model="Month" width="10px"/> Năm <input type="number" v-model="Year" width="10px"/>      <button class="btn btn-primary" @click="Print">Print</button>
+								In vé Tháng <input type="number" v-model="Month" width="10px"/> Năm <input type="number" v-model="Year" width="10px"/>      <button class="btn btn-primary" @click="Print">Print</button>
 							</p>
 						</h2>
 					</div>

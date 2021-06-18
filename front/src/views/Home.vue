@@ -24,7 +24,7 @@
 							<div class="booking-form">
 								<div class="row">
 									<div class="col-md-12">
-										<h3 class="lable-h">Miền Đông Station</h3>
+										<h3 class="lable-h">Mien Dong Station</h3>
 										<span></span>
 									</div>
 								</div>

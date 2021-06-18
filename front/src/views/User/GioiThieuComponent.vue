@@ -22,25 +22,25 @@
 					<div class="col-md-12 align-self-center">
 					  <div class="right-content">
 						<span>LỊCH SỬ HÌNH THÀNH BẾN XE MIỀN ĐÔNG</span>
-						<h2>Quá trình thành lập <em>Công ty TNHH MTV Bến xe Miền Đông</em></h2>
+						<h2>Quá trình thành lập <em>Công ty TNHH Mien Dong Station</em></h2>
 						<p>
-							Tên Công ty: <b>CÔNG TY TNHH MỘT THÀNH VIÊN BẾN XE MIỀN ĐÔNG</b><br/>
-							Tên viết tắt: <b>BẾN XE MIỀN ĐÔNG</b><br/>
+							Tên Công ty: <b>CÔNG TY TNHH Mien Dong Station</b><br/>
+							Tên viết tắt: <b>Mien Dong Station</b><br/>
 							Tên giao dịch quốc tế: <b>MIEN DONG STATION COMPANY LIMITED</b><br/>
 							Tên viết tắt: <b>MIDO CO.LTD</b><br/>
 							Trụ sở văn phòng:<br/>
 							<ul>
-								<li> - Địa chỉ: 292 Đinh Bộ Lĩnh, P.26, Q.Bình Thạnh, TP.HCM</li>
-								<li> - Hotline: 1900571292</li>
-								<li> - Liên Hệ: 028.35116858 ( Phòng Kế Hoạch Vận Tải ) -  028.38994056 - 02838984442 ( Quầy Thông Tin )</li>
-								<li> - Số Fax: 028.38992094</li>
-								<li> - Website: <a href="http://www.benxemiendong.com.vn">http://www.benxemiendong.com.vn</a></li>
-								<li> - Email: benxemiendong@benxemiendong.com.vn</li>
+								<li> - Địa chỉ: ___ Đinh Bộ Lĩnh, P.__, Q.Bình Thạnh, TP.HCM</li>
+								<li> - Hotline: 0847603779</li>
+								<li> - Liên Hệ: 028.________ ( Phòng Kế Hoạch Vận Tải ) -  028.________ - 028.________ ( Quầy Thông Tin )</li>
+								<li> - Số Fax: 028.________</li>
+								<li> - Website: <a href="http://miendongstation.xyz">http://miendongstation.xyz</a></li>
+								<li> - Email: webmaster@miendongstation.com.vn</li>
 							</ul>
 							<br/>
-							- Vốn điều lệ: 72.000.000.000đ (Bảy mươi hai tỷ đồng) 100% vốn điều lệ sở hữu nhà nước.<br/>
-							- Mã số thuế: 0301092597<br/>
-							- Số tài khoản: 102010000151269 tại Ngân hàng Công thương chi nhánh 7- TP.HCM <br/><br/>
+							- Vốn điều lệ: __.000.000.000đ ( ____ tỷ đồng) 100% vốn điều lệ sở hữu nhà nước.<br/>
+							- Mã số thuế: 030_______<br/>
+							- Số tài khoản: 102010000______ tại Ngân hàng Công thương chi nhánh 7 - TP.HCM <br/><br/>
 
 							Bến Xe Miền Đông có từ trước năm 1975 với tên gọi là Xa Cảng Miền Đông, trụ sở đặt tại số 286 đường Lê Hồng Phong, phường 1, Quận 10. Sau ngày đất nước thống nhất 30/04/1975, Ủy ban quân quản thành phố Sài Gòn Gia Định đã giao cho ngành Giao thông Vận tải tiếp quản, tổ chức điều hành Xa Cảng Miền Đông thực hiện nhiệm vụ chính trị, vận tải giao lưu thông thương giữa hai miền Nam – Bắc. Ngày 11/12/1976 Xa Cảng Miền Đông Trung Bộ ra đời là tiền thân của Công ty TNHH một thành viên Bến xe Miền Đông ngày hôm nay.<br/><br/>
 							Đến năm 1978 theo chủ trương của thành phố, Công ty Xe khách liên tỉnh Miền Đông ra đời và Bến xe khách Miền Đông là đơn vị trực thuộc Công ty Xe khách liên tỉnh Miền Đông, hạch toán nội bộ, năm 1981 thành phố quyết định chuyển Bến xe Miền Đông đến vị trí phường 26, quận Bình Thạnh và đầu tư cơ sở vật chất ,trang thiết bị ban đầu. Bến xe Miền Đông xây dựng từ 1985 trên diện tích khu đất 67.857 m2 (có vị trí địa lý tại cửa ngõ phía Đông thành phố Hồ Chí Minh, được bao quanh bởi các đường Quốc lộ 13, Nguyễn Xí và Đinh Bộ Lĩnh, phường 26 – Quận Bình Thạnh). Theo luận chứng kinh tế kỹ thuật xây dựng công trình Bến xe Miền Đông được Ủy ban Nhân dân thành phố Hồ Chí Minh phê duyệt theo quyết định số 182/CT-UB ngày 25/12/1984 với tất cả 19 hạng mục công trình nhưng việc thi công mới được 10 hạng mục công trình và phải tạm dừng năm 1990.<br/><br/>
@@ -53,9 +53,9 @@
 
 							Bến xe Miền Đông<br/>
 
-							292 Đinh Bộ Lĩnh, Phường 26, Quận Bình Thạnh<br/>
+							___ Đinh Bộ Lĩnh, Phường __, Quận Bình Thạnh<br/>
 
-							Điện thoại: 028.35116858 ( Phòng Kế Hoạch Vận Tải ) -  028.38994056 - 02838984442 ( Quầy Thông Tin )<br/>
+							Điện thoại: 028.________ ( Phòng Kế Hoạch Vận Tải ) -  028.________ - 028.________ ( Quầy Thông Tin )<br/>
 						</p>
 					  </div>
 					</div>

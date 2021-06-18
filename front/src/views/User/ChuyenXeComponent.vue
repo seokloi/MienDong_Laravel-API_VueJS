@@ -10,7 +10,7 @@
 							<div class="booking-form">
 								<div class="row">
 									<div class="col-md-12">
-										<h3 class="lable-h">Miền Đông Station</h3>
+										<h3 class="lable-h">Mien Dong Station</h3>
 										<h5>{{ this.listBenXe.DiaDiem1 }} - {{ this.listBenXe.DiaDiem2 }}: Bến {{ this.listBenXe.Ten }}</h5>
 									</div>
 								</div>

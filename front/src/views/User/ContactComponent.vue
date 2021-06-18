@@ -8,7 +8,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<h1>THÔNG TIN LIÊN HỆ</h1>
-						<span>CÔNG TY TNHH MTV BẾN XE MIỀN ĐÔNG</span>
+						<span>CÔNG TY TNHH Mien Dong Station</span>
 					</div>
 				</div>
 			</div>
@@ -21,21 +21,21 @@
 						<div class="contact-item">
 							<i class="fa fa-phone"></i>
 							<h4>Điện thoại</h4>
-							<p>Phone: (08) 899 1607 / Fax: (08) 899 2094</p>
+							<p>Phone: (08) 4760 3779</p>
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="contact-item">
 							<i class="fa fa-envelope"></i>
 							<h4>Email</h4>
-							<p>webmaster@benxemiendong.com.vn</p>
+							<p>webmaster@miendongstation.com.vn</p>
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="contact-item">
 							<i class="fa fa-map-marker"></i>
 							<h4>Địa chỉ</h4>
-							<p>292 Đinh Bộ Lĩnh, phường 26, Bình Thạnh</p>
+							<p>___ Đinh Bộ Lĩnh, phường __, Bình Thạnh</p>
 						</div>
 					</div>
 				</div>

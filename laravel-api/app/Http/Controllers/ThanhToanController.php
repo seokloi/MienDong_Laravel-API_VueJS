@@ -18,8 +18,8 @@ class ThanhToanController extends Controller
         ]);
         
         // $nlcheckout= new NL_CheckOutV3('65115','7f736e67823b7280fa311cdfaa16c1d0','trannguyenloi99@gmail.com','https://www.nganluong.vn/checkout.api.nganluong.post.php');
-        $nlcheckout= new NL_CheckOutV3('65102','7a0d37956e8fb395be2187af16f3365e','trannguyenloi99@gmail.com','https://www.nganluong.vn/checkout.api.nganluong.post.php');
-        // $nlcheckout= new NL_CheckOutV3('36680','matkhauketnoi','demo@nganluong.vn','https://www.nganluong.vn/checkout.api.nganluong.post.php');
+        // $nlcheckout= new NL_CheckOutV3('65102','7a0d37956e8fb395be2187af16f3365e','trannguyenloi99@gmail.com','https://www.nganluong.vn/checkout.api.nganluong.post.php');
+        $nlcheckout= new NL_CheckOutV3('36680','matkhauketnoi','trannguyenloi99@gmail.com','https://www.nganluong.vn/checkout.api.nganluong.post.php');
         $total_amount = $request->input('total_amount');
         
         $array_items[0]= array('item_name1' => 'Product name',
@@ -30,15 +30,15 @@ class ThanhToanController extends Controller
         // $array_items=array();				 
         $payment_method = $request->input('option_payment');
         $bank_code = $request->input('bankcode');
-        $order_code ="MDS_".time();
+        $order_code ="MDS_".$request->input('id_Chuyen')."_".$request->input('buyer_email')."_".$request->input('buyer_mobile')."_".time();
         
         $payment_type = '';
         $discount_amount = 0;
         $order_description = 'Thanh toán Ngân Lượng tại MienDongStation';
         $tax_amount = 0;
         $fee_shipping = 0;
-        $return_url = 'http://192.168.1.252:8080/user-payment-success';
-        $cancel_url = 'http://192.168.1.252:8080/user-payment-fail';
+        $return_url = 'http://localhost:8080/user-payment-success';
+        $cancel_url = 'http://localhost:8080/user-payment-fail';
         
         $buyer_fullname = $request->input('buyer_fullname');
         $buyer_email = $request->input('buyer_email');

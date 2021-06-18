@@ -5,7 +5,7 @@
 				<div class="col-md-12">
 					<div class="section-heading">
 						<h2>
-							<em>Miền Đông Station</em>
+							<em>Mien Dong Station</em>
 						</h2>
 					</div>
 				</div>

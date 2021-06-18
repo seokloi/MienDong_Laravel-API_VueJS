@@ -23,7 +23,7 @@
 							</li>
 							<li>
 								<a href="#">
-									<i class="fa fa-phone"></i>Hotline: 1900 571292
+									<i class="fa fa-phone"></i>Hotline: 084 7603 779
 								</a>
 							</li>
 						</ul>
@@ -53,7 +53,7 @@
 							</li>
 							<li>
 								<a href="#">
-									<i class="fa fa-phone"></i>Hotline: 1900 571292
+									<i class="fa fa-phone"></i>Hotline: 084 7603 779
 								</a>
 							</li>
 						</ul>
