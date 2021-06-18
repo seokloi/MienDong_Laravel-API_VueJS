@@ -12,7 +12,7 @@ __Back-end__
 - Run __php artisan key:generate__
 - Run __php artisan migrate --seed__ (it has some seeded data for your testing)
 - Run __php artisan passport:install__
-
+- Run __php artisan serve__
 
 __Front-end__
 
@@ -21,7 +21,6 @@ __Front-end__
 - Run __npm install__ 
 - Run __npm run serve__ 
 - That's it: launch the URL that appears in the terminal - could be `http://localhost:8080`
-
 
 ## License
 
