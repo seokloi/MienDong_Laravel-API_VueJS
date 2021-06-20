@@ -99,9 +99,12 @@
 							<td>{{ product.GiaVe }}</td>
 							<td>{{ product.TienCoc }}</td>
 							<td>{{ product.updated_at | formatDate }}</td>
-							<td>
+							<td v-if="product.paymenting == 0">
 								<button class="btn btn-primary" @click="selecteProduct(product,index)">Edit</button>
 								<button class="btn btn-danger" @click="deleteProduct(product)">Delete</button>
+							</td>
+							<td v-else="">
+								IS PAYMENTING...
 							</td>
 						</tr>
 					</transition-group>
@@ -146,7 +149,8 @@ export default {
                    Code: '',
                    GiaVe: '',
                    TienCoc: 0,
-                   updated_at: ''
+                   updated_at: '',
+				   paymenting: 0
                },
                listProducts: {},
                error: null,

@@ -9,7 +9,7 @@ class nv_banve extends Model
     //
     protected $table = 'nv_banves';
     protected $fillable = [
-    	'id_Chuyen', 'id_NhanVien', 'Ghe', 'id_KhachHang', 'TenKhachHang', 'SDT', 'Code', 'TienCoc', 'Email'
+    	'id_Chuyen', 'id_NhanVien', 'Ghe', 'id_KhachHang', 'TenKhachHang', 'SDT', 'Code', 'TienCoc', 'Email', 'paymenting'
     ];
 
     public function nhanvien(){

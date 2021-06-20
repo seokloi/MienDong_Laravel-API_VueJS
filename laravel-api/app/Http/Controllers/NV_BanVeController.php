@@ -165,8 +165,19 @@ class NV_BanVeController extends Controller
 
     public function update(Request $request, $id)
     {
+        if($request->input('paymenting') == 1)
+        {
+            $product = nv_banve::find($id);
+            if($product->paymenting == 1)
+            {
+                return response()->json(1, 201);
+            }
+            $product->paymenting = 1;
+            $product->save();
+            return response()->json(0, 201);
+        }
         //Nhan Vien Ban Ve
-        if($request->input('id_User'))
+        else if($request->input('id_User'))
         {
             $this->validate($request, [
                 'id_User' => 'required',
@@ -282,6 +293,7 @@ class NV_BanVeController extends Controller
         $product->Email = null;
         $product->Code = null;
         $product->TienCoc = 0;
+        $product->paymenting = 0;
 
         $product->save();
 

@@ -14,7 +14,8 @@
                                     </div>
 									<hr width="500px"/>
                                     <div class="col-md-12">
-										<h5>Thanh toán thất bại</h5>
+										<h5>Huỷ bỏ giao dịch</h5>
+										<h6>Vé mua đã có người đặt hoặc Thanh toán thất bại</h6>
                                     </div>
 								</div>
 							</div>

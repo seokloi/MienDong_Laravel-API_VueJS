@@ -36,6 +36,7 @@ class NV_BanVeResource extends JsonResource
                 'Code' => $this->Code,
                 'GiaVe' => $this->chuyenxe->GiaVe,
                 'TienCoc' => $this->TienCoc,
+                'paymenting' => $this->paymenting,
                 'created_at' => $this->created_at,
                 'updated_at' => $this->updated_at,
                 ];
@@ -57,6 +58,7 @@ class NV_BanVeResource extends JsonResource
                 'Code' => $this->Code,
                 'GiaVe' => $this->chuyenxe->GiaVe,
                 'TienCoc' => $this->TienCoc,
+                'paymenting' => $this->paymenting,
                 'created_at' => $this->created_at,
                 'updated_at' => $this->updated_at,
                 ];
@@ -82,6 +84,7 @@ class NV_BanVeResource extends JsonResource
                 'Code' => $this->Code,
                 'GiaVe' => $this->chuyenxe->GiaVe,
                 'TienCoc' => $this->TienCoc,
+                'paymenting' => $this->paymenting,
                 'created_at' => $this->created_at,
                 'updated_at' => $this->updated_at,
                 ];
@@ -102,6 +105,7 @@ class NV_BanVeResource extends JsonResource
                 'Code' => $this->Code,
                 'GiaVe' => $this->chuyenxe->GiaVe,
                 'TienCoc' => $this->TienCoc,
+                'paymenting' => $this->paymenting,
                 'created_at' => $this->created_at,
                 'updated_at' => $this->updated_at,
                 ];

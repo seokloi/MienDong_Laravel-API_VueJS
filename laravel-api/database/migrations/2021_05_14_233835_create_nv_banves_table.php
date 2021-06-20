@@ -24,6 +24,7 @@ class CreateNvBanvesTable extends Migration
             $table->string('Email')->nullable();
             $table->string('Code')->nullable();
             $table->integer('TienCoc')->default(0);
+            $table->integer('paymenting')->default(0);
             $table->timestamps();
             $table->foreign('id_NhanVien')->references('id')->on('nhanviens');
             $table->foreign('id_KhachHang')->references('id')->on('khachhangs');

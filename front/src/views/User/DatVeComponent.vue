@@ -19,6 +19,9 @@
 									<div class="col-md-12">
 										<h3 class="lable-h">Mien Dong Station</h3>
 									</div>
+									<div id="timer" class="col-md-12">
+										<span>Sau {{ minutes }}:{{ seconds }} sẽ huỷ vé. Vui lòng không đóng cửa sổ này.</span>
+									</div>
 								</div>
 								<div class="row" v-if="NhapThongTin == 0 && ThanhToan == 0">
 									<div class="So-do-xe col-md-12" v-if="this.listChuyen.id_Loai == 1">
@@ -37,51 +40,51 @@
 											<span class="Ten-tang">Tầng 1</span>
 											<hr/>
 											
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[0].TenKhachHang & !ListVes.data[0].isSelect, 'Ghe-xe-dangchon': ListVes.data[0].isSelect, 'Ghe-xe-dadat': ListVes.data[0].TenKhachHang }" v-on:click="Select(ListVes.data[0])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[0].TenKhachHang & !ListVes.data[0].isSelect & !ListVes.data[0].paymenting, 'Ghe-xe-dangchon': ListVes.data[0].isSelect, 'Ghe-xe-dadat': ListVes.data[0].TenKhachHang || ListVes.data[0].paymenting }" v-on:click="Select(ListVes.data[0])">
 												{{ ListVes.data[0].Ghe }}
 											</button>
 											<button class="Ghe-xe-rong" disabled=""> _ </button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[1].TenKhachHang & !ListVes.data[1].isSelect, 'Ghe-xe-dangchon': ListVes.data[1].isSelect, 'Ghe-xe-dadat': ListVes.data[1].TenKhachHang }" v-on:click="Select(ListVes.data[1])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[1].TenKhachHang & !ListVes.data[1].isSelect & !ListVes.data[1].paymenting, 'Ghe-xe-dangchon': ListVes.data[1].isSelect, 'Ghe-xe-dadat': ListVes.data[1].TenKhachHang || ListVes.data[1].paymenting }" v-on:click="Select(ListVes.data[1])">
 												{{ ListVes.data[1].Ghe }}
 											</button>
 											
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[2].TenKhachHang & !ListVes.data[2].isSelect, 'Ghe-xe-dangchon': ListVes.data[2].isSelect, 'Ghe-xe-dadat': ListVes.data[2].TenKhachHang }" v-on:click="Select(ListVes.data[2])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[2].TenKhachHang & !ListVes.data[2].isSelect & !ListVes.data[2].paymenting, 'Ghe-xe-dangchon': ListVes.data[2].isSelect, 'Ghe-xe-dadat': ListVes.data[2].TenKhachHang || ListVes.data[2].paymenting }" v-on:click="Select(ListVes.data[2])">
 												{{ ListVes.data[2].Ghe }}
 											</button>
 											<button class="Ghe-xe-rong" disabled=""> _ </button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[3].TenKhachHang & !ListVes.data[3].isSelect, 'Ghe-xe-dangchon': ListVes.data[3].isSelect, 'Ghe-xe-dadat': ListVes.data[3].TenKhachHang }" v-on:click="Select(ListVes.data[3])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[3].TenKhachHang & !ListVes.data[3].isSelect & !ListVes.data[3].paymenting, 'Ghe-xe-dangchon': ListVes.data[3].isSelect, 'Ghe-xe-dadat': ListVes.data[3].TenKhachHang || ListVes.data[3].paymenting }" v-on:click="Select(ListVes.data[3])">
 												{{ ListVes.data[3].Ghe }}
 											</button>
 										
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[4].TenKhachHang & !ListVes.data[4].isSelect, 'Ghe-xe-dangchon': ListVes.data[4].isSelect, 'Ghe-xe-dadat': ListVes.data[4].TenKhachHang }" v-on:click="Select(ListVes.data[4])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[4].TenKhachHang & !ListVes.data[4].isSelect & !ListVes.data[4].paymenting, 'Ghe-xe-dangchon': ListVes.data[4].isSelect, 'Ghe-xe-dadat': ListVes.data[4].TenKhachHang || ListVes.data[4].paymenting }" v-on:click="Select(ListVes.data[4])">
 												{{ ListVes.data[4].Ghe }}
 											</button>
 											<button class="Ghe-xe-rong" disabled=""> _ </button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[5].TenKhachHang & !ListVes.data[5].isSelect, 'Ghe-xe-dangchon': ListVes.data[5].isSelect, 'Ghe-xe-dadat': ListVes.data[5].TenKhachHang }" v-on:click="Select(ListVes.data[5])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[5].TenKhachHang & !ListVes.data[5].isSelect & !ListVes.data[5].paymenting, 'Ghe-xe-dangchon': ListVes.data[5].isSelect, 'Ghe-xe-dadat': ListVes.data[5].TenKhachHang || ListVes.data[5].paymenting }" v-on:click="Select(ListVes.data[5])">
 												{{ ListVes.data[5].Ghe }}
 											</button>
 									
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[6].TenKhachHang & !ListVes.data[6].isSelect, 'Ghe-xe-dangchon': ListVes.data[6].isSelect, 'Ghe-xe-dadat': ListVes.data[6].TenKhachHang }" v-on:click="Select(ListVes.data[6])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[6].TenKhachHang & !ListVes.data[6].isSelect & !ListVes.data[6].paymenting, 'Ghe-xe-dangchon': ListVes.data[6].isSelect, 'Ghe-xe-dadat': ListVes.data[6].TenKhachHang || ListVes.data[6].paymenting }" v-on:click="Select(ListVes.data[6])">
 												{{ ListVes.data[6].Ghe }}
 											</button>
 											<button class="Ghe-xe-rong" disabled=""> _ </button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[7].TenKhachHang & !ListVes.data[7].isSelect, 'Ghe-xe-dangchon': ListVes.data[7].isSelect, 'Ghe-xe-dadat': ListVes.data[7].TenKhachHang }" v-on:click="Select(ListVes.data[7])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[7].TenKhachHang & !ListVes.data[7].isSelect & !ListVes.data[7].paymenting, 'Ghe-xe-dangchon': ListVes.data[7].isSelect, 'Ghe-xe-dadat': ListVes.data[7].TenKhachHang || ListVes.data[7].paymenting }" v-on:click="Select(ListVes.data[7])">
 												{{ ListVes.data[7].Ghe }}
 											</button>
 									
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[8].TenKhachHang & !ListVes.data[8].isSelect, 'Ghe-xe-dangchon': ListVes.data[8].isSelect, 'Ghe-xe-dadat': ListVes.data[8].TenKhachHang }" v-on:click="Select(ListVes.data[8])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[8].TenKhachHang & !ListVes.data[8].isSelect & !ListVes.data[8].paymenting, 'Ghe-xe-dangchon': ListVes.data[8].isSelect, 'Ghe-xe-dadat': ListVes.data[8].TenKhachHang || ListVes.data[8].paymenting }" v-on:click="Select(ListVes.data[8])">
 												{{ ListVes.data[8].Ghe }}
 											</button>
 											<button class="Ghe-xe-rong" disabled=""> _ </button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[9].TenKhachHang & !ListVes.data[9].isSelect, 'Ghe-xe-dangchon': ListVes.data[9].isSelect, 'Ghe-xe-dadat': ListVes.data[9].TenKhachHang }" v-on:click="Select(ListVes.data[9])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[9].TenKhachHang & !ListVes.data[9].isSelect & !ListVes.data[9].paymenting, 'Ghe-xe-dangchon': ListVes.data[9].isSelect, 'Ghe-xe-dadat': ListVes.data[9].TenKhachHang || ListVes.data[9].paymenting }" v-on:click="Select(ListVes.data[9])">
 												{{ ListVes.data[9].Ghe }}
 											</button>
 											
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[10].TenKhachHang & !ListVes.data[10].isSelect, 'Ghe-xe-dangchon': ListVes.data[10].isSelect, 'Ghe-xe-dadat': ListVes.data[10].TenKhachHang }" v-on:click="Select(ListVes.data[10])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[10].TenKhachHang & !ListVes.data[10].isSelect & !ListVes.data[10].paymenting, 'Ghe-xe-dangchon': ListVes.data[10].isSelect, 'Ghe-xe-dadat': ListVes.data[10].TenKhachHang || ListVes.data[10].paymenting }" v-on:click="Select(ListVes.data[10])">
 												{{ ListVes.data[10].Ghe }}
 											</button>
 											<button class="Ghe-xe-rong" disabled=""> _ </button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[11].TenKhachHang & !ListVes.data[11].isSelect, 'Ghe-xe-dangchon': ListVes.data[11].isSelect, 'Ghe-xe-dadat': ListVes.data[11].TenKhachHang }" v-on:click="Select(ListVes.data[11])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[11].TenKhachHang & !ListVes.data[11].isSelect & !ListVes.data[11].paymenting, 'Ghe-xe-dangchon': ListVes.data[11].isSelect, 'Ghe-xe-dadat': ListVes.data[11].TenKhachHang || ListVes.data[11].paymenting }" v-on:click="Select(ListVes.data[11])">
 												{{ ListVes.data[11].Ghe }}
 											</button>
 										</div>
@@ -89,51 +92,51 @@
 											<span class="Ten-tang">Tầng 2</span>
 											<hr/>
 											
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[12].TenKhachHang & !ListVes.data[12].isSelect, 'Ghe-xe-dangchon': ListVes.data[12].isSelect, 'Ghe-xe-dadat': ListVes.data[12].TenKhachHang }" v-on:click="Select(ListVes.data[12])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[12].TenKhachHang & !ListVes.data[12].isSelect & !ListVes.data[12].paymenting, 'Ghe-xe-dangchon': ListVes.data[12].isSelect, 'Ghe-xe-dadat': ListVes.data[12].TenKhachHang || ListVes.data[12].paymenting }" v-on:click="Select(ListVes.data[12])">
 												{{ ListVes.data[12].Ghe }}
 											</button>
 											<button class="Ghe-xe-rong" disabled=""> _ </button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[13].TenKhachHang & !ListVes.data[13].isSelect, 'Ghe-xe-dangchon': ListVes.data[13].isSelect, 'Ghe-xe-dadat': ListVes.data[13].TenKhachHang }" v-on:click="Select(ListVes.data[13])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[13].TenKhachHang & !ListVes.data[13].isSelect & !ListVes.data[13].paymenting, 'Ghe-xe-dangchon': ListVes.data[13].isSelect, 'Ghe-xe-dadat': ListVes.data[13].TenKhachHang || ListVes.data[13].paymenting }" v-on:click="Select(ListVes.data[13])">
 												{{ ListVes.data[13].Ghe }}
 											</button>
 													
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[14].TenKhachHang & !ListVes.data[14].isSelect, 'Ghe-xe-dangchon': ListVes.data[14].isSelect, 'Ghe-xe-dadat': ListVes.data[14].TenKhachHang }" v-on:click="Select(ListVes.data[14])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[14].TenKhachHang & !ListVes.data[14].isSelect & !ListVes.data[14].paymenting, 'Ghe-xe-dangchon': ListVes.data[14].isSelect, 'Ghe-xe-dadat': ListVes.data[14].TenKhachHang || ListVes.data[14].paymenting }" v-on:click="Select(ListVes.data[14])">
 												{{ ListVes.data[14].Ghe }}
 											</button>
 											<button class="Ghe-xe-rong" disabled=""> _ </button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[15].TenKhachHang & !ListVes.data[15].isSelect, 'Ghe-xe-dangchon': ListVes.data[15].isSelect, 'Ghe-xe-dadat': ListVes.data[15].TenKhachHang }" v-on:click="Select(ListVes.data[15])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[15].TenKhachHang & !ListVes.data[15].isSelect & !ListVes.data[15].paymenting, 'Ghe-xe-dangchon': ListVes.data[15].isSelect, 'Ghe-xe-dadat': ListVes.data[15].TenKhachHang || ListVes.data[15].paymenting }" v-on:click="Select(ListVes.data[15])">
 												{{ ListVes.data[15].Ghe }}
 											</button>
 											
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[16].TenKhachHang & !ListVes.data[16].isSelect, 'Ghe-xe-dangchon': ListVes.data[16].isSelect, 'Ghe-xe-dadat': ListVes.data[16].TenKhachHang }" v-on:click="Select(ListVes.data[16])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[16].TenKhachHang & !ListVes.data[16].isSelect & !ListVes.data[16].paymenting, 'Ghe-xe-dangchon': ListVes.data[16].isSelect, 'Ghe-xe-dadat': ListVes.data[16].TenKhachHang || ListVes.data[16].paymenting }" v-on:click="Select(ListVes.data[16])">
 												{{ ListVes.data[16].Ghe }}
 											</button>
 											<button class="Ghe-xe-rong" disabled=""> _ </button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[17].TenKhachHang & !ListVes.data[17].isSelect, 'Ghe-xe-dangchon': ListVes.data[17].isSelect, 'Ghe-xe-dadat': ListVes.data[17].TenKhachHang }" v-on:click="Select(ListVes.data[17])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[17].TenKhachHang & !ListVes.data[17].isSelect & !ListVes.data[17].paymenting, 'Ghe-xe-dangchon': ListVes.data[17].isSelect, 'Ghe-xe-dadat': ListVes.data[17].TenKhachHang || ListVes.data[17].paymenting }" v-on:click="Select(ListVes.data[17])">
 												{{ ListVes.data[17].Ghe }}
 											</button>
 												
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[18].TenKhachHang & !ListVes.data[18].isSelect, 'Ghe-xe-dangchon': ListVes.data[18].isSelect, 'Ghe-xe-dadat': ListVes.data[18].TenKhachHang }" v-on:click="Select(ListVes.data[18])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[18].TenKhachHang & !ListVes.data[18].isSelect & !ListVes.data[18].paymenting, 'Ghe-xe-dangchon': ListVes.data[18].isSelect, 'Ghe-xe-dadat': ListVes.data[18].TenKhachHang || ListVes.data[18].paymenting }" v-on:click="Select(ListVes.data[18])">
 												{{ ListVes.data[18].Ghe }}
 											</button>
 											<button class="Ghe-xe-rong" disabled=""> _ </button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[19].TenKhachHang & !ListVes.data[19].isSelect, 'Ghe-xe-dangchon': ListVes.data[19].isSelect, 'Ghe-xe-dadat': ListVes.data[19].TenKhachHang }" v-on:click="Select(ListVes.data[19])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[19].TenKhachHang & !ListVes.data[19].isSelect & !ListVes.data[19].paymenting, 'Ghe-xe-dangchon': ListVes.data[19].isSelect, 'Ghe-xe-dadat': ListVes.data[19].TenKhachHang || ListVes.data[19].paymenting }" v-on:click="Select(ListVes.data[19])">
 												{{ ListVes.data[19].Ghe }}
 											</button>
 											
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[20].TenKhachHang & !ListVes.data[20].isSelect, 'Ghe-xe-dangchon': ListVes.data[20].isSelect, 'Ghe-xe-dadat': ListVes.data[20].TenKhachHang }" v-on:click="Select(ListVes.data[20])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[20].TenKhachHang & !ListVes.data[20].isSelect & !ListVes.data[20].paymenting, 'Ghe-xe-dangchon': ListVes.data[20].isSelect, 'Ghe-xe-dadat': ListVes.data[20].TenKhachHang || ListVes.data[20].paymenting }" v-on:click="Select(ListVes.data[20])">
 												{{ ListVes.data[20].Ghe }}
 											</button>
 											<button class="Ghe-xe-rong" disabled=""> _ </button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[21].TenKhachHang & !ListVes.data[21].isSelect, 'Ghe-xe-dangchon': ListVes.data[21].isSelect, 'Ghe-xe-dadat': ListVes.data[21].TenKhachHang }" v-on:click="Select(ListVes.data[21])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[21].TenKhachHang & !ListVes.data[21].isSelect & !ListVes.data[21].paymenting, 'Ghe-xe-dangchon': ListVes.data[21].isSelect, 'Ghe-xe-dadat': ListVes.data[21].TenKhachHang || ListVes.data[21].paymenting }" v-on:click="Select(ListVes.data[21])">
 												{{ ListVes.data[21].Ghe }}
 											</button>
 													
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[22].TenKhachHang & !ListVes.data[22].isSelect, 'Ghe-xe-dangchon': ListVes.data[22].isSelect, 'Ghe-xe-dadat': ListVes.data[22].TenKhachHang }" v-on:click="Select(ListVes.data[22])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[22].TenKhachHang & !ListVes.data[22].isSelect & !ListVes.data[22].paymenting, 'Ghe-xe-dangchon': ListVes.data[22].isSelect, 'Ghe-xe-dadat': ListVes.data[22].TenKhachHang || ListVes.data[22].paymenting }" v-on:click="Select(ListVes.data[22])">
 												{{ ListVes.data[22].Ghe }}
 											</button>
 											<button class="Ghe-xe-rong" disabled=""> _ </button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[23].TenKhachHang & !ListVes.data[23].isSelect, 'Ghe-xe-dangchon': ListVes.data[23].isSelect, 'Ghe-xe-dadat': ListVes.data[23].TenKhachHang }" v-on:click="Select(ListVes.data[23])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[23].TenKhachHang & !ListVes.data[23].isSelect & !ListVes.data[23].paymenting, 'Ghe-xe-dangchon': ListVes.data[23].isSelect, 'Ghe-xe-dadat': ListVes.data[23].TenKhachHang || ListVes.data[23].paymenting }" v-on:click="Select(ListVes.data[23])">
 												{{ ListVes.data[23].Ghe }}
 											</button>
 										</div>
@@ -154,61 +157,61 @@
 											<span class="Ten-tang">Tầng 1</span>
 											<hr/>
 											
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[0].TenKhachHang & !ListVes.data[0].isSelect, 'Ghe-xe-dangchon': ListVes.data[0].isSelect, 'Ghe-xe-dadat': ListVes.data[0].TenKhachHang }" v-on:click="Select(ListVes.data[0])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[0].TenKhachHang & !ListVes.data[0].isSelect & !ListVes.data[0].paymenting, 'Ghe-xe-dangchon': ListVes.data[0].isSelect, 'Ghe-xe-dadat': ListVes.data[0].TenKhachHang || ListVes.data[0].paymenting }" v-on:click="Select(ListVes.data[0])">
 												{{ ListVes.data[0].Ghe }}
 											</button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[1].TenKhachHang & !ListVes.data[1].isSelect, 'Ghe-xe-dangchon': ListVes.data[1].isSelect, 'Ghe-xe-dadat': ListVes.data[1].TenKhachHang }" v-on:click="Select(ListVes.data[1])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[1].TenKhachHang & !ListVes.data[1].isSelect & !ListVes.data[1].paymenting, 'Ghe-xe-dangchon': ListVes.data[1].isSelect, 'Ghe-xe-dadat': ListVes.data[1].TenKhachHang || ListVes.data[1].paymenting }" v-on:click="Select(ListVes.data[1])">
 												{{ ListVes.data[1].Ghe }}
 											</button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[2].TenKhachHang & !ListVes.data[2].isSelect, 'Ghe-xe-dangchon': ListVes.data[2].isSelect, 'Ghe-xe-dadat': ListVes.data[2].TenKhachHang }" v-on:click="Select(ListVes.data[2])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[2].TenKhachHang & !ListVes.data[2].isSelect & !ListVes.data[2].paymenting, 'Ghe-xe-dangchon': ListVes.data[2].isSelect, 'Ghe-xe-dadat': ListVes.data[2].TenKhachHang || ListVes.data[2].paymenting }" v-on:click="Select(ListVes.data[2])">
 												{{ ListVes.data[2].Ghe }}
 											</button>
 											
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[3].TenKhachHang & !ListVes.data[3].isSelect, 'Ghe-xe-dangchon': ListVes.data[3].isSelect, 'Ghe-xe-dadat': ListVes.data[3].TenKhachHang }" v-on:click="Select(ListVes.data[3])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[3].TenKhachHang & !ListVes.data[3].isSelect & !ListVes.data[3].paymenting, 'Ghe-xe-dangchon': ListVes.data[3].isSelect, 'Ghe-xe-dadat': ListVes.data[3].TenKhachHang || ListVes.data[3].paymenting }" v-on:click="Select(ListVes.data[3])">
 												{{ ListVes.data[3].Ghe }}
 											</button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[4].TenKhachHang & !ListVes.data[4].isSelect, 'Ghe-xe-dangchon': ListVes.data[4].isSelect, 'Ghe-xe-dadat': ListVes.data[4].TenKhachHang }" v-on:click="Select(ListVes.data[4])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[4].TenKhachHang & !ListVes.data[4].isSelect & !ListVes.data[4].paymenting, 'Ghe-xe-dangchon': ListVes.data[4].isSelect, 'Ghe-xe-dadat': ListVes.data[4].TenKhachHang || ListVes.data[4].paymenting }" v-on:click="Select(ListVes.data[4])">
 												{{ ListVes.data[4].Ghe }}
 											</button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[5].TenKhachHang & !ListVes.data[5].isSelect, 'Ghe-xe-dangchon': ListVes.data[5].isSelect, 'Ghe-xe-dadat': ListVes.data[5].TenKhachHang }" v-on:click="Select(ListVes.data[5])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[5].TenKhachHang & !ListVes.data[5].isSelect & !ListVes.data[5].paymenting, 'Ghe-xe-dangchon': ListVes.data[5].isSelect, 'Ghe-xe-dadat': ListVes.data[5].TenKhachHang || ListVes.data[5].paymenting }" v-on:click="Select(ListVes.data[5])">
 												{{ ListVes.data[5].Ghe }}
 											</button>
 									
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[6].TenKhachHang & !ListVes.data[6].isSelect, 'Ghe-xe-dangchon': ListVes.data[6].isSelect, 'Ghe-xe-dadat': ListVes.data[6].TenKhachHang }" v-on:click="Select(ListVes.data[6])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[6].TenKhachHang & !ListVes.data[6].isSelect & !ListVes.data[6].paymenting, 'Ghe-xe-dangchon': ListVes.data[6].isSelect, 'Ghe-xe-dadat': ListVes.data[6].TenKhachHang || ListVes.data[6].paymenting }" v-on:click="Select(ListVes.data[6])">
 												{{ ListVes.data[6].Ghe }}
 											</button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[7].TenKhachHang & !ListVes.data[7].isSelect, 'Ghe-xe-dangchon': ListVes.data[7].isSelect, 'Ghe-xe-dadat': ListVes.data[7].TenKhachHang }" v-on:click="Select(ListVes.data[7])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[7].TenKhachHang & !ListVes.data[7].isSelect & !ListVes.data[7].paymenting, 'Ghe-xe-dangchon': ListVes.data[7].isSelect, 'Ghe-xe-dadat': ListVes.data[7].TenKhachHang || ListVes.data[7].paymenting }" v-on:click="Select(ListVes.data[7])">
 												{{ ListVes.data[7].Ghe }}
 											</button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[8].TenKhachHang & !ListVes.data[8].isSelect, 'Ghe-xe-dangchon': ListVes.data[8].isSelect, 'Ghe-xe-dadat': ListVes.data[8].TenKhachHang }" v-on:click="Select(ListVes.data[8])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[8].TenKhachHang & !ListVes.data[8].isSelect & !ListVes.data[8].paymenting, 'Ghe-xe-dangchon': ListVes.data[8].isSelect, 'Ghe-xe-dadat': ListVes.data[8].TenKhachHang || ListVes.data[8].paymenting }" v-on:click="Select(ListVes.data[8])">
 												{{ ListVes.data[8].Ghe }}
 											</button>
 											
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[9].TenKhachHang & !ListVes.data[9].isSelect, 'Ghe-xe-dangchon': ListVes.data[9].isSelect, 'Ghe-xe-dadat': ListVes.data[9].TenKhachHang }" v-on:click="Select(ListVes.data[9])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[9].TenKhachHang & !ListVes.data[9].isSelect & !ListVes.data[9].paymenting, 'Ghe-xe-dangchon': ListVes.data[9].isSelect, 'Ghe-xe-dadat': ListVes.data[9].TenKhachHang || ListVes.data[9].paymenting }" v-on:click="Select(ListVes.data[9])">
 												{{ ListVes.data[9].Ghe }}
 											</button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[10].TenKhachHang & !ListVes.data[10].isSelect, 'Ghe-xe-dangchon': ListVes.data[10].isSelect, 'Ghe-xe-dadat': ListVes.data[10].TenKhachHang }" v-on:click="Select(ListVes.data[10])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[10].TenKhachHang & !ListVes.data[10].isSelect & !ListVes.data[10].paymenting, 'Ghe-xe-dangchon': ListVes.data[10].isSelect, 'Ghe-xe-dadat': ListVes.data[10].TenKhachHang || ListVes.data[10].paymenting }" v-on:click="Select(ListVes.data[10])">
 												{{ ListVes.data[10].Ghe }}
 											</button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[11].TenKhachHang & !ListVes.data[11].isSelect, 'Ghe-xe-dangchon': ListVes.data[11].isSelect, 'Ghe-xe-dadat': ListVes.data[11].TenKhachHang }" v-on:click="Select(ListVes.data[11])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[11].TenKhachHang & !ListVes.data[11].isSelect & !ListVes.data[11].paymenting, 'Ghe-xe-dangchon': ListVes.data[11].isSelect, 'Ghe-xe-dadat': ListVes.data[11].TenKhachHang || ListVes.data[11].paymenting }" v-on:click="Select(ListVes.data[11])">
 												{{ ListVes.data[11].Ghe }}
 											</button>
 											
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[12].TenKhachHang & !ListVes.data[12].isSelect, 'Ghe-xe-dangchon': ListVes.data[12].isSelect, 'Ghe-xe-dadat': ListVes.data[12].TenKhachHang }" v-on:click="Select(ListVes.data[12])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[12].TenKhachHang & !ListVes.data[12].isSelect & !ListVes.data[12].paymenting, 'Ghe-xe-dangchon': ListVes.data[12].isSelect, 'Ghe-xe-dadat': ListVes.data[12].TenKhachHang || ListVes.data[12].paymenting }" v-on:click="Select(ListVes.data[12])">
 												{{ ListVes.data[12].Ghe }}
 											</button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[13].TenKhachHang & !ListVes.data[13].isSelect, 'Ghe-xe-dangchon': ListVes.data[13].isSelect, 'Ghe-xe-dadat': ListVes.data[13].TenKhachHang }" v-on:click="Select(ListVes.data[13])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[13].TenKhachHang & !ListVes.data[13].isSelect & !ListVes.data[13].paymenting, 'Ghe-xe-dangchon': ListVes.data[13].isSelect, 'Ghe-xe-dadat': ListVes.data[13].TenKhachHang || ListVes.data[13].paymenting }" v-on:click="Select(ListVes.data[13])">
 												{{ ListVes.data[13].Ghe }}
 											</button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[14].TenKhachHang & !ListVes.data[14].isSelect, 'Ghe-xe-dangchon': ListVes.data[14].isSelect, 'Ghe-xe-dadat': ListVes.data[14].TenKhachHang }" v-on:click="Select(ListVes.data[14])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[14].TenKhachHang & !ListVes.data[14].isSelect & !ListVes.data[14].paymenting, 'Ghe-xe-dangchon': ListVes.data[14].isSelect, 'Ghe-xe-dadat': ListVes.data[14].TenKhachHang || ListVes.data[14].paymenting }" v-on:click="Select(ListVes.data[14])">
 												{{ ListVes.data[14].Ghe }}
 											</button>
 											
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[15].TenKhachHang & !ListVes.data[15].isSelect, 'Ghe-xe-dangchon': ListVes.data[15].isSelect, 'Ghe-xe-dadat': ListVes.data[15].TenKhachHang }" v-on:click="Select(ListVes.data[15])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[15].TenKhachHang & !ListVes.data[15].isSelect & !ListVes.data[15].paymenting, 'Ghe-xe-dangchon': ListVes.data[15].isSelect, 'Ghe-xe-dadat': ListVes.data[15].TenKhachHang || ListVes.data[15].paymenting }" v-on:click="Select(ListVes.data[15])">
 												{{ ListVes.data[15].Ghe }}
 											</button>
 											<button class="Ghe-xe-rong" disabled=""> _ </button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[16].TenKhachHang & !ListVes.data[16].isSelect, 'Ghe-xe-dangchon': ListVes.data[16].isSelect, 'Ghe-xe-dadat': ListVes.data[16].TenKhachHang }" v-on:click="Select(ListVes.data[16])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[16].TenKhachHang & !ListVes.data[16].isSelect & !ListVes.data[16].paymenting, 'Ghe-xe-dangchon': ListVes.data[16].isSelect, 'Ghe-xe-dadat': ListVes.data[16].TenKhachHang || ListVes.data[16].paymenting }" v-on:click="Select(ListVes.data[16])">
 												{{ ListVes.data[16].Ghe }}
 											</button>
 										</div>
@@ -216,61 +219,61 @@
 											<span class="Ten-tang">Tầng 2</span>
 											<hr/>
 											
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[17].TenKhachHang & !ListVes.data[17].isSelect, 'Ghe-xe-dangchon': ListVes.data[17].isSelect, 'Ghe-xe-dadat': ListVes.data[17].TenKhachHang }" v-on:click="Select(ListVes.data[17])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[17].TenKhachHang & !ListVes.data[17].isSelect & !ListVes.data[17].paymenting, 'Ghe-xe-dangchon': ListVes.data[17].isSelect, 'Ghe-xe-dadat': ListVes.data[17].TenKhachHang || ListVes.data[17].paymenting }" v-on:click="Select(ListVes.data[17])">
 												{{ ListVes.data[17].Ghe }}
 											</button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[18].TenKhachHang & !ListVes.data[18].isSelect, 'Ghe-xe-dangchon': ListVes.data[18].isSelect, 'Ghe-xe-dadat': ListVes.data[18].TenKhachHang }" v-on:click="Select(ListVes.data[18])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[18].TenKhachHang & !ListVes.data[18].isSelect & !ListVes.data[18].paymenting, 'Ghe-xe-dangchon': ListVes.data[18].isSelect, 'Ghe-xe-dadat': ListVes.data[18].TenKhachHang || ListVes.data[18].paymenting }" v-on:click="Select(ListVes.data[18])">
 												{{ ListVes.data[18].Ghe }}
 											</button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[19].TenKhachHang & !ListVes.data[19].isSelect, 'Ghe-xe-dangchon': ListVes.data[19].isSelect, 'Ghe-xe-dadat': ListVes.data[19].TenKhachHang }" v-on:click="Select(ListVes.data[19])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[19].TenKhachHang & !ListVes.data[19].isSelect & !ListVes.data[19].paymenting, 'Ghe-xe-dangchon': ListVes.data[19].isSelect, 'Ghe-xe-dadat': ListVes.data[19].TenKhachHang || ListVes.data[19].paymenting }" v-on:click="Select(ListVes.data[19])">
 												{{ ListVes.data[19].Ghe }}
 											</button>
 											
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[20].TenKhachHang & !ListVes.data[20].isSelect, 'Ghe-xe-dangchon': ListVes.data[20].isSelect, 'Ghe-xe-dadat': ListVes.data[20].TenKhachHang }" v-on:click="Select(ListVes.data[20])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[20].TenKhachHang & !ListVes.data[20].isSelect & !ListVes.data[20].paymenting, 'Ghe-xe-dangchon': ListVes.data[20].isSelect, 'Ghe-xe-dadat': ListVes.data[20].TenKhachHang || ListVes.data[20].paymenting }" v-on:click="Select(ListVes.data[20])">
 												{{ ListVes.data[20].Ghe }}
 											</button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[21].TenKhachHang & !ListVes.data[21].isSelect, 'Ghe-xe-dangchon': ListVes.data[21].isSelect, 'Ghe-xe-dadat': ListVes.data[21].TenKhachHang }" v-on:click="Select(ListVes.data[21])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[21].TenKhachHang & !ListVes.data[21].isSelect & !ListVes.data[21].paymenting, 'Ghe-xe-dangchon': ListVes.data[21].isSelect, 'Ghe-xe-dadat': ListVes.data[21].TenKhachHang || ListVes.data[21].paymenting }" v-on:click="Select(ListVes.data[21])">
 												{{ ListVes.data[21].Ghe }}
 											</button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[22].TenKhachHang & !ListVes.data[22].isSelect, 'Ghe-xe-dangchon': ListVes.data[22].isSelect, 'Ghe-xe-dadat': ListVes.data[22].TenKhachHang }" v-on:click="Select(ListVes.data[22])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[22].TenKhachHang & !ListVes.data[22].isSelect & !ListVes.data[22].paymenting, 'Ghe-xe-dangchon': ListVes.data[22].isSelect, 'Ghe-xe-dadat': ListVes.data[22].TenKhachHang || ListVes.data[22].paymenting }" v-on:click="Select(ListVes.data[22])">
 												{{ ListVes.data[22].Ghe }}
 											</button>
 											
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[23].TenKhachHang & !ListVes.data[23].isSelect, 'Ghe-xe-dangchon': ListVes.data[23].isSelect, 'Ghe-xe-dadat': ListVes.data[23].TenKhachHang }" v-on:click="Select(ListVes.data[23])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[23].TenKhachHang & !ListVes.data[23].isSelect & !ListVes.data[23].paymenting, 'Ghe-xe-dangchon': ListVes.data[23].isSelect, 'Ghe-xe-dadat': ListVes.data[23].TenKhachHang || ListVes.data[23].paymenting }" v-on:click="Select(ListVes.data[23])">
 												{{ ListVes.data[23].Ghe }}
 											</button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[24].TenKhachHang & !ListVes.data[24].isSelect, 'Ghe-xe-dangchon': ListVes.data[24].isSelect, 'Ghe-xe-dadat': ListVes.data[24].TenKhachHang }" v-on:click="Select(ListVes.data[24])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[24].TenKhachHang & !ListVes.data[24].isSelect & !ListVes.data[24].paymenting, 'Ghe-xe-dangchon': ListVes.data[24].isSelect, 'Ghe-xe-dadat': ListVes.data[24].TenKhachHang || ListVes.data[24].paymenting }" v-on:click="Select(ListVes.data[24])">
 												{{ ListVes.data[24].Ghe }}
 											</button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[25].TenKhachHang & !ListVes.data[25].isSelect, 'Ghe-xe-dangchon': ListVes.data[25].isSelect, 'Ghe-xe-dadat': ListVes.data[25].TenKhachHang }" v-on:click="Select(ListVes.data[25])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[25].TenKhachHang & !ListVes.data[25].isSelect & !ListVes.data[25].paymenting, 'Ghe-xe-dangchon': ListVes.data[25].isSelect, 'Ghe-xe-dadat': ListVes.data[25].TenKhachHang || ListVes.data[25].paymenting }" v-on:click="Select(ListVes.data[25])">
 												{{ ListVes.data[25].Ghe }}
 											</button>
 											
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[26].TenKhachHang & !ListVes.data[26].isSelect, 'Ghe-xe-dangchon': ListVes.data[26].isSelect, 'Ghe-xe-dadat': ListVes.data[26].TenKhachHang }" v-on:click="Select(ListVes.data[26])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[26].TenKhachHang & !ListVes.data[26].isSelect & !ListVes.data[26].paymenting, 'Ghe-xe-dangchon': ListVes.data[26].isSelect, 'Ghe-xe-dadat': ListVes.data[26].TenKhachHang || ListVes.data[26].paymenting }" v-on:click="Select(ListVes.data[26])">
 												{{ ListVes.data[26].Ghe }}
 											</button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[27].TenKhachHang & !ListVes.data[27].isSelect, 'Ghe-xe-dangchon': ListVes.data[27].isSelect, 'Ghe-xe-dadat': ListVes.data[27].TenKhachHang }" v-on:click="Select(ListVes.data[27])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[27].TenKhachHang & !ListVes.data[27].isSelect & !ListVes.data[27].paymenting, 'Ghe-xe-dangchon': ListVes.data[27].isSelect, 'Ghe-xe-dadat': ListVes.data[27].TenKhachHang || ListVes.data[27].paymenting }" v-on:click="Select(ListVes.data[27])">
 												{{ ListVes.data[27].Ghe }}
 											</button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[28].TenKhachHang & !ListVes.data[28].isSelect, 'Ghe-xe-dangchon': ListVes.data[28].isSelect, 'Ghe-xe-dadat': ListVes.data[28].TenKhachHang }" v-on:click="Select(ListVes.data[28])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[28].TenKhachHang & !ListVes.data[28].isSelect & !ListVes.data[28].paymenting, 'Ghe-xe-dangchon': ListVes.data[28].isSelect, 'Ghe-xe-dadat': ListVes.data[28].TenKhachHang || ListVes.data[28].paymenting }" v-on:click="Select(ListVes.data[28])">
 												{{ ListVes.data[28].Ghe }}
 											</button>
 											
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[29].TenKhachHang & !ListVes.data[29].isSelect, 'Ghe-xe-dangchon': ListVes.data[29].isSelect, 'Ghe-xe-dadat': ListVes.data[29].TenKhachHang }" v-on:click="Select(ListVes.data[29])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[29].TenKhachHang & !ListVes.data[29].isSelect & !ListVes.data[29].paymenting, 'Ghe-xe-dangchon': ListVes.data[29].isSelect, 'Ghe-xe-dadat': ListVes.data[29].TenKhachHang || ListVes.data[29].paymenting }" v-on:click="Select(ListVes.data[29])">
 												{{ ListVes.data[29].Ghe }}
 											</button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[30].TenKhachHang & !ListVes.data[30].isSelect, 'Ghe-xe-dangchon': ListVes.data[30].isSelect, 'Ghe-xe-dadat': ListVes.data[30].TenKhachHang }" v-on:click="Select(ListVes.data[30])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[30].TenKhachHang & !ListVes.data[30].isSelect & !ListVes.data[30].paymenting, 'Ghe-xe-dangchon': ListVes.data[30].isSelect, 'Ghe-xe-dadat': ListVes.data[30].TenKhachHang || ListVes.data[30].paymenting }" v-on:click="Select(ListVes.data[30])">
 												{{ ListVes.data[30].Ghe }}
 											</button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[31].TenKhachHang & !ListVes.data[31].isSelect, 'Ghe-xe-dangchon': ListVes.data[31].isSelect, 'Ghe-xe-dadat': ListVes.data[31].TenKhachHang }" v-on:click="Select(ListVes.data[31])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[31].TenKhachHang & !ListVes.data[31].isSelect & !ListVes.data[31].paymenting, 'Ghe-xe-dangchon': ListVes.data[31].isSelect, 'Ghe-xe-dadat': ListVes.data[31].TenKhachHang || ListVes.data[31].paymenting }" v-on:click="Select(ListVes.data[31])">
 												{{ ListVes.data[31].Ghe }}
 											</button>
 											
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[32].TenKhachHang & !ListVes.data[32].isSelect, 'Ghe-xe-dangchon': ListVes.data[32].isSelect, 'Ghe-xe-dadat': ListVes.data[32].TenKhachHang }" v-on:click="Select(ListVes.data[32])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[32].TenKhachHang & !ListVes.data[32].isSelect & !ListVes.data[32].paymenting, 'Ghe-xe-dangchon': ListVes.data[32].isSelect, 'Ghe-xe-dadat': ListVes.data[32].TenKhachHang || ListVes.data[32].paymenting }" v-on:click="Select(ListVes.data[32])">
 												{{ ListVes.data[32].Ghe }}
 											</button>
 											<button class="Ghe-xe-rong" disabled=""> _ </button>
-											<button v-bind:class="{'Ghe-xe': !ListVes.data[33].TenKhachHang & !ListVes.data[33].isSelect, 'Ghe-xe-dangchon': ListVes.data[33].isSelect, 'Ghe-xe-dadat': ListVes.data[33].TenKhachHang }" v-on:click="Select(ListVes.data[33])">
+											<button v-bind:class="{'Ghe-xe': !ListVes.data[33].TenKhachHang & !ListVes.data[33].isSelect & !ListVes.data[33].paymenting, 'Ghe-xe-dangchon': ListVes.data[33].isSelect, 'Ghe-xe-dadat': ListVes.data[33].TenKhachHang || ListVes.data[33].paymenting }" v-on:click="Select(ListVes.data[33])">
 												{{ ListVes.data[33].Ghe }}
 											</button>
 										</div>
@@ -506,7 +509,7 @@
 													<button class="btn btn-lg btn-primary btn-block" style="background-color: gray;" v-on:click="ThanhToan = 0">Quay Lại</button>
 												</td>
 												<td v-if="option_payment == 'Cash'">
-													<button class="btn btn-lg btn-primary btn-block" v-on:click="PaymentSuccess = 1">Thanh Toán</button>
+													<button class="btn btn-lg btn-primary btn-block" v-on:click="PaymentCash">Thanh Toán</button>
 												</td>
 												<td v-else-if="user">
 													<button class="btn btn-lg btn-primary btn-block" v-on:click="PaymentUser">Thanh Toán</button>
@@ -565,6 +568,9 @@
 										<h3 class="lable-h">Kết quả giao dịch</h3>
                                     </div>
 									<hr width="500px"/>
+									<div id="timer" class="col-md-12">
+										<span>Sau {{ minutes }}:{{ seconds }} sẽ huỷ vé. Vui lòng không đóng cửa sổ này.</span>
+									</div>
                                     <div class="col-md-12" v-if="CheckFinal == 0">
 										<h5 v-if="this.option_payment == 'Cash'">
 											Cảm ơn bạn đã đặt vé. Hãy xác nhận đặt vé để hoàn tất. <br/> ... <br/>
@@ -606,7 +612,8 @@ export default {
 		ve: {
 			id: 0,
 			Ghe: '',
-			GiaVe: 0
+			GiaVe: 0,
+			paymenting: 0
 		},
 		khachhang:{
 			name: '',
@@ -630,12 +637,20 @@ export default {
 		listChuyen: null,
 		ListVes: null,
 		success: null,
-		error: null
+		error: null,
+		timer: null,
+		totalTime: (5 * 60)
 		};
 	},
 	computed: {
 		...mapGetters(["errors"]),
-		...mapGetters("auth", ["user"])
+		...mapGetters("auth", ["user"]),
+		minutes: function() {
+			return this.padTime(Math.floor(this.totalTime / 60))
+		},
+		seconds: function() {
+			return this.padTime(this.totalTime - (this.minutes * 60))
+		}
 	},
 	created() {
 		this.getListChuyen()
@@ -645,56 +660,79 @@ export default {
 		goToEvents: function () {
 			location.href='/'
 		},
+		padTime: function(time) {
+			return (time < 10 ? '0' : '') + time
+		},
+		countdown: function() {
+			this.totalTime--
+			if(this.totalTime < 0)
+			{
+				this.TongVe.forEach(ve => {
+					axios.delete(process.env.VUE_APP_API_URL + 'nv_banve/' + ve.id)
+				})
+                this.$router.push('User-Payment-Fail')
+			}
+		},
 		async CheckPayment(){
 			try {
-                   const response = await axios.get(process.env.VUE_APP_API_URL + 'thanhtoan', {
-					   params: {
-					   		token: this.token
-                       }
-                   })
-				   this.Mess = response.data
-               } catch (error) {
-                   this.error = error.response.data
-               }
+				const response = await axios.get(process.env.VUE_APP_API_URL + 'thanhtoan', {
+					params: {
+						token: this.token
+					}
+				})
+				this.Mess = response.data
+			} catch (error) {
+				this.error = error.response.data
+			}
 		},
 		async PaymentUser(){
 			try {
-                   const response = await axios.post(process.env.VUE_APP_API_URL + 'thanhtoan', {
-                       id_Chuyen: this.$route.query.id_Chuyen,
-                       buyer_fullname: this.khachhang.name,
-					   buyer_email: this.khachhang.EmailNhap,
-					   buyer_mobile: this.khachhang.sdt,
-					   total_amount: this.TongTienDiscout,
-					   option_payment: this.option_payment,
-					   bankcode: this.bankcode
-                   })
-				   window.open(response.data.checkout_url, '_blank')
-				   this.token = response.data.token
-				   this.PaymentSuccess = 1
-               } catch (error) {
-                   this.error = error.response.data
-               }
+				const response = await axios.post(process.env.VUE_APP_API_URL + 'thanhtoan', {
+				id_Chuyen: this.$route.query.id_Chuyen,
+				buyer_fullname: this.khachhang.name,
+				buyer_email: this.khachhang.EmailNhap,
+				buyer_mobile: this.khachhang.sdt,
+				total_amount: this.TongTienDiscout,
+				option_payment: this.option_payment,
+				bankcode: this.bankcode
+				})
+				this.token = response.data.token
+				this.PaymentSuccess = 1
+				this.timer = setInterval(()=>this.countdown(), 1000)
+				window.open(response.data.checkout_url, '_blank')
+			} catch (error) {
+				this.error = error.response.data
+			}
 		},
 		async PaymentNotUser(){
 			try {
-                   const response = await axios.post(process.env.VUE_APP_API_URL + 'thanhtoan', {
-                       id_Chuyen: this.$route.query.id_Chuyen,
-                       buyer_fullname: this.khachhang.name,
-					   buyer_email: this.khachhang.EmailNhap,
-					   buyer_mobile: this.khachhang.sdt,
-					   total_amount: this.TongTien,
-					   option_payment: this.option_payment,
-					   bankcode: this.bankcode
-                   })
-				   window.open(response.data.checkout_url, '_blank')
-				   this.token = response.data.token
-				   this.PaymentSuccess = 1
-               } catch (error) {
-                   this.error = error.response.data
-               }
+				const response = await axios.post(process.env.VUE_APP_API_URL + 'thanhtoan', {
+				id_Chuyen: this.$route.query.id_Chuyen,
+				buyer_fullname: this.khachhang.name,
+				buyer_email: this.khachhang.EmailNhap,
+				buyer_mobile: this.khachhang.sdt,
+				total_amount: this.TongTien,
+				option_payment: this.option_payment,
+				bankcode: this.bankcode
+				})
+				this.token = response.data.token
+				this.PaymentSuccess = 1
+				this.timer = setInterval(()=>this.countdown(), 1000)
+				window.open(response.data.checkout_url, '_blank')
+			} catch (error) {
+				this.error = error.response.data
+			}
+		},
+		async PaymentCash(){
+			try {
+				this.PaymentSuccess = 1
+				this.totalTime = (2 * 60)
+				this.timer = setInterval(()=>this.countdown(), 1000)
+			} catch (error) {
+				this.error = error.response.data
+			}
 		},
 		async ThanhToanBegin(id){
-			this.ThanhToan = 1
 			try {
                 const response = await axios.get(process.env.VUE_APP_API_URL + 'khachhang/' + id)
                 this.ListLogin = response.data.data
@@ -708,82 +746,82 @@ export default {
 			this.GiaVeDiscount = this.GiaVeDiscount - this.GiaVeDiscount*this.discount/100
 		},
 		async ThanhToanUser(){
-			  try {
+			try {
 				this.TongVe.forEach(ve => {
-						 axios.put(process.env.VUE_APP_API_URL + 'nv_banve/' + ve.id, {
-							TenKhachHang: this.khachhang.name,
-							SDT: this.khachhang.sdt,
-							email: this.ListLogin.email,
-							EmailNhap: this.khachhang.EmailNhap,
-							GiaVe: this.listChuyen.GiaVe,
-							TienCoc: this.GiaVeDiscount,
-							option_payment: this.option_payment
-						})
+						axios.put(process.env.VUE_APP_API_URL + 'nv_banve/' + ve.id, {
+						TenKhachHang: this.khachhang.name,
+						SDT: this.khachhang.sdt,
+						email: this.ListLogin.email,
+						EmailNhap: this.khachhang.EmailNhap,
+						GiaVe: this.listChuyen.GiaVe,
+						TienCoc: this.GiaVeDiscount,
+						option_payment: this.option_payment
 					})
-                } catch (error) {
-                    this.error = error.response.data
-                }
-				this.CheckFinal = 1
+				})
+			} catch (error) {
+				this.error = error.response.data
+			}
+			this.CheckFinal = 1
 		},
 		async ThanhToanNotUser(){
-			  try {
+			try {
 				this.TongVe.forEach(ve => {
-						 axios.put(process.env.VUE_APP_API_URL + 'nv_banve/' + ve.id, {
-							TenKhachHang: this.khachhang.name,
-							SDT: this.khachhang.sdt,
-							EmailNhap: this.khachhang.EmailNhap,
-							GiaVe: this.listChuyen.GiaVe,
-							TienCoc: this.listChuyen.GiaVe,
-							option_payment: this.option_payment
-						})
+					axios.put(process.env.VUE_APP_API_URL + 'nv_banve/' + ve.id, {
+						TenKhachHang: this.khachhang.name,
+						SDT: this.khachhang.sdt,
+						EmailNhap: this.khachhang.EmailNhap,
+						GiaVe: this.listChuyen.GiaVe,
+						TienCoc: this.listChuyen.GiaVe,
+						option_payment: this.option_payment
 					})
-                } catch (error) {
-                    this.error = error.response.data
-                }
-				this.CheckFinal = 1
+				})
+			} catch (error) {
+				this.error = error.response.data
+			}
+			this.CheckFinal = 1
 		},
 		async Select(ve) {
-			  if(ve.isSelect)
-			  {
+			if(ve.isSelect)
+			{
 				this.UnSelect(ve)
-			  }
-			  else if(!ve.TenKhachHang)
-			  {
+			}
+			else if(!ve.TenKhachHang && ve.paymenting == 0)
+			{
 				this.InSelect(ve)
-			  }
+			}
         },
 		async InSelect(ve) {
-			  ve.isSelect = true
-              this.TongTien += this.listChuyen.GiaVe
-			  this.TongVe.push(ve)
+			ve.isSelect = true
+			this.TongTien += this.listChuyen.GiaVe
+			this.TongVe.push(ve)
         },
 		async UnSelect(ve) {
-			  ve.isSelect = false
-			  this.TongTien -= this.listChuyen.GiaVe
-			  this.TongVe.splice(this.TongVe.indexOf(ve), 1);
+			ve.isSelect = false
+			this.TongTien -= this.listChuyen.GiaVe
+			this.TongVe.splice(this.TongVe.indexOf(ve), 1)
         },
 		async getListChuyen() {
-               try {
-                   const response = await axios.get(process.env.VUE_APP_API_URL + 'chuyenxe/' + this.$route.query.id_Chuyen)
-                   this.listChuyen = response.data.data
-               } catch (error) {
-                   this.error = error.response.data
-               }
+			try {
+				const response = await axios.get(process.env.VUE_APP_API_URL + 'chuyenxe/' + this.$route.query.id_Chuyen)
+				this.listChuyen = response.data.data
+			} catch (error) {
+				this.error = error.response.data
+			}
         },
 		async getListVes() {
-               try {
-                   const response = await axios.get(process.env.VUE_APP_API_URL + 'nv_banve', {
-                       params: {
-					       id_Chuyen: this.$route.query.id_Chuyen
-                       }
-                   })
-                   this.ListVes = response.data
-				   this.ListVes.forEach(ve => {
-                        vue.set(ve, 'isSelect', false)
-                    })
-               } catch (error) {
-                   this.error = error.response.data
-               }
+			try {
+				const response = await axios.get(process.env.VUE_APP_API_URL + 'nv_banve', {
+					params: {
+						id_Chuyen: this.$route.query.id_Chuyen
+					}
+				})
+				this.ListVes = response.data
+				this.ListVes.forEach(ve => {
+					vue.set(ve, 'isSelect', false)
+				})
+			} catch (error) {
+				this.error = error.response.data
+			}
         }
 	}
 };
