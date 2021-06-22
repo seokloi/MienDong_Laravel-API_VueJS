@@ -33,7 +33,7 @@
 							<th>Giờ</th>
 							<th>Giá Vé</th>
 							<th width="100px"></th>
-							<th width="245px"></th>
+							<th width="180px"></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -110,12 +110,13 @@
 							<td>{{ product.GiaVe }}</td>
 							<td>
 								<p v-if="product.SoGhe">Số Ghế: {{ product.SoGhe }}</p>
+								<button class="btn btn-primary" v-if=" product.Printed  == 0" @click="PrintTicket(product.id)">P.Ticket</button>
+								<p v-if="product.DaDat">Đã đặt: {{ product.DaDat }}</p>
 								<p v-if="product.ConLai">Còn lại: {{ product.ConLai }}</p>
 							</td>
 							<td>
 								<button class="btn btn-primary" @click="selecteProduct(product,index)">Edit</button>
-								<button class="btn btn-danger" @click="deleteProduct(product, index)">Delete</button>
-								<button class="btn btn-primary" v-if=" product.Printed  == 0" @click="PrintTicket(product.id)">P.Ticket</button>
+								<button class="btn btn-danger" v-if=" product.Printed  == 0" @click="deleteProduct(product, index)">Delete</button>
 								<button class="btn btn-danger" v-else="" @click="XuatBen(product.id)">P.Bill</button>
 							</td>
 						</tr>

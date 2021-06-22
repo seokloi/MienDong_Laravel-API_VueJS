@@ -29,6 +29,7 @@
 							<th>Giá Vé</th>
 							<th>Tiền Cọc</th>
 							<th>Ngày Lập</th>
+                            <th width="180px"></th>
 						</tr>
 					</thead>
 					<transition-group name="slide-fade" tag="tbody">
@@ -44,6 +45,12 @@
 							<td>{{ product.GiaVe }}</td>
 							<td>{{ product.TienCoc }}</td>
 							<td>{{ product.updated_at | formatDate }}</td>
+                            <td v-if="product.paymenting == 0">
+							</td>
+							<td v-else="">
+								IS PAYMENTING...
+								<button class="btn btn-danger" @click="deleteProduct(product)">Cancel</button>
+							</td>
 						</tr>
 					</transition-group>
 				</table>
@@ -179,6 +186,14 @@ export default {
                } catch (error) {
                    this.error = error.response.data
                }
+            },
+            async deleteProduct(product) {
+                try {
+                    await axios.delete(process.env.VUE_APP_API_URL + 'nv_banve/' + product.id)
+                    this.$router.go(0)
+                } catch (error) {
+                    this.error = error.response.data
+                }
             }
        }
    }

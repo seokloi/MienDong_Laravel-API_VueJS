@@ -105,6 +105,7 @@
 							</td>
 							<td v-else="">
 								IS PAYMENTING...
+								<button class="btn btn-danger" @click="deleteProduct(product)">Cancel</button>
 							</td>
 						</tr>
 					</transition-group>

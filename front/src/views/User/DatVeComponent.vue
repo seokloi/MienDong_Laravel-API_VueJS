@@ -18,9 +18,7 @@
 								<div class="row" v-else="">
 									<div class="col-md-12">
 										<h3 class="lable-h">Mien Dong Station</h3>
-									</div>
-									<div id="timer" class="col-md-12">
-										<span>Sau {{ minutes }}:{{ seconds }} sẽ huỷ vé. Vui lòng không đóng cửa sổ này.</span>
+										{{ this.ispaymenting }}
 									</div>
 								</div>
 								<div class="row" v-if="NhapThongTin == 0 && ThanhToan == 0">
@@ -509,13 +507,13 @@
 													<button class="btn btn-lg btn-primary btn-block" style="background-color: gray;" v-on:click="ThanhToan = 0">Quay Lại</button>
 												</td>
 												<td v-if="option_payment == 'Cash'">
-													<button class="btn btn-lg btn-primary btn-block" v-on:click="PaymentCash">Thanh Toán</button>
+													<button class="btn btn-lg btn-primary btn-block" v-on:click="PaymentAll('Cash')">Thanh Toán</button>
 												</td>
 												<td v-else-if="user">
-													<button class="btn btn-lg btn-primary btn-block" v-on:click="PaymentUser">Thanh Toán</button>
+													<button class="btn btn-lg btn-primary btn-block" v-on:click="PaymentAll('User')">Thanh Toán</button>
 												</td>
 												<td v-else="">
-													<button class="btn btn-lg btn-primary btn-block" v-on:click="PaymentNotUser">Thanh Toán</button>
+													<button class="btn btn-lg btn-primary btn-block" v-on:click="PaymentAll('NotUser')">Thanh Toán</button>
 												</td>
 											</tr>
 										</tbody>
@@ -525,6 +523,7 @@
 								<div class="row" v-if="NhapThongTin == 0 && ThanhToan == 0">
 									<div class="col-md-2"></div>
 									<div class="col-md-4" align="left">
+										{{ this.Listid }}
 										Ghế: <span v-for="ve in TongVe" :key="ve.id">{{ ve.Ghe }}</span>
 									</div>
 									<div class="col-md-3" align="right">
@@ -568,7 +567,7 @@
 										<h3 class="lable-h">Kết quả giao dịch</h3>
                                     </div>
 									<hr width="500px"/>
-									<div id="timer" class="col-md-12">
+									<div id="timer" class="col-md-12" v-if="CheckFinal == 0">
 										<span>Sau {{ minutes }}:{{ seconds }} sẽ huỷ vé. Vui lòng không đóng cửa sổ này.</span>
 									</div>
                                     <div class="col-md-12" v-if="CheckFinal == 0">
@@ -634,12 +633,14 @@ export default {
 		TongTienDiscount: 0,
 		GiaVeDiscount: 0,
 		TongVe: [],
+		Listid: [],
 		listChuyen: null,
 		ListVes: null,
 		success: null,
 		error: null,
 		timer: null,
-		totalTime: (5 * 60)
+		totalTime: (5 * 60),
+		ispaymenting: 0
 		};
 	},
 	computed: {
@@ -657,9 +658,6 @@ export default {
 		this.getListVes()
 	},
 	methods: {
-		goToEvents: function () {
-			location.href='/'
-		},
 		padTime: function(time) {
 			return (time < 10 ? '0' : '') + time
 		},
@@ -685,16 +683,52 @@ export default {
 				this.error = error.response.data
 			}
 		},
+		async PaymentAll(way) {
+			const response = await axios.get(process.env.VUE_APP_API_URL + 'thanhtoan', {
+				params: {
+					ids: this.Listid
+				}
+			})
+			this.ispaymenting = response.data
+			if(response.data == "fail")
+			{
+				this.$router.push('User-Payment-Fail')
+			}
+			else
+			{
+				if(way == "User")
+				{
+					this.PaymentUser()
+				}
+				else if(way =="NotUser")
+				{
+					this.PaymentNotUser()
+				}
+				else
+				{
+					this.PaymentCash()
+				}
+			}
+		},
+		async PaymentCash(){
+			try {
+					this.PaymentSuccess = 1
+					this.totalTime = (2 * 60)
+					this.timer = setInterval(()=>this.countdown(), 1000)
+			} catch (error) {
+				this.error = error.response.data
+			}
+		},
 		async PaymentUser(){
 			try {
 				const response = await axios.post(process.env.VUE_APP_API_URL + 'thanhtoan', {
-				id_Chuyen: this.$route.query.id_Chuyen,
-				buyer_fullname: this.khachhang.name,
-				buyer_email: this.khachhang.EmailNhap,
-				buyer_mobile: this.khachhang.sdt,
-				total_amount: this.TongTienDiscout,
-				option_payment: this.option_payment,
-				bankcode: this.bankcode
+					id_Chuyen: this.$route.query.id_Chuyen,
+					buyer_fullname: this.khachhang.name,
+					buyer_email: this.khachhang.EmailNhap,
+					buyer_mobile: this.khachhang.sdt,
+					total_amount: this.TongTienDiscout,
+					option_payment: this.option_payment,
+					bankcode: this.bankcode
 				})
 				this.token = response.data.token
 				this.PaymentSuccess = 1
@@ -707,27 +741,18 @@ export default {
 		async PaymentNotUser(){
 			try {
 				const response = await axios.post(process.env.VUE_APP_API_URL + 'thanhtoan', {
-				id_Chuyen: this.$route.query.id_Chuyen,
-				buyer_fullname: this.khachhang.name,
-				buyer_email: this.khachhang.EmailNhap,
-				buyer_mobile: this.khachhang.sdt,
-				total_amount: this.TongTien,
-				option_payment: this.option_payment,
-				bankcode: this.bankcode
+					id_Chuyen: this.$route.query.id_Chuyen,
+					buyer_fullname: this.khachhang.name,
+					buyer_email: this.khachhang.EmailNhap,
+					buyer_mobile: this.khachhang.sdt,
+					total_amount: this.TongTien,
+					option_payment: this.option_payment,
+					bankcode: this.bankcode
 				})
 				this.token = response.data.token
 				this.PaymentSuccess = 1
 				this.timer = setInterval(()=>this.countdown(), 1000)
 				window.open(response.data.checkout_url, '_blank')
-			} catch (error) {
-				this.error = error.response.data
-			}
-		},
-		async PaymentCash(){
-			try {
-				this.PaymentSuccess = 1
-				this.totalTime = (2 * 60)
-				this.timer = setInterval(()=>this.countdown(), 1000)
 			} catch (error) {
 				this.error = error.response.data
 			}
@@ -762,6 +787,7 @@ export default {
 				this.error = error.response.data
 			}
 			this.CheckFinal = 1
+			this.totalTime = (100 * 60)
 		},
 		async ThanhToanNotUser(){
 			try {
@@ -779,6 +805,7 @@ export default {
 				this.error = error.response.data
 			}
 			this.CheckFinal = 1
+			this.totalTime = (100 * 60)
 		},
 		async Select(ve) {
 			if(ve.isSelect)
@@ -794,11 +821,13 @@ export default {
 			ve.isSelect = true
 			this.TongTien += this.listChuyen.GiaVe
 			this.TongVe.push(ve)
+			this.Listid.push(ve.id)
         },
 		async UnSelect(ve) {
 			ve.isSelect = false
 			this.TongTien -= this.listChuyen.GiaVe
 			this.TongVe.splice(this.TongVe.indexOf(ve), 1)
+			this.Listid.splice(this.TongVe.indexOf(ve.id), 1)
         },
 		async getListChuyen() {
 			try {

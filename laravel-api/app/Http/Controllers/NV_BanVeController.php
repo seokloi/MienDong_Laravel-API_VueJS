@@ -165,19 +165,8 @@ class NV_BanVeController extends Controller
 
     public function update(Request $request, $id)
     {
-        if($request->input('paymenting') == 1)
-        {
-            $product = nv_banve::find($id);
-            if($product->paymenting == 1)
-            {
-                return response()->json(1, 201);
-            }
-            $product->paymenting = 1;
-            $product->save();
-            return response()->json(0, 201);
-        }
         //Nhan Vien Ban Ve
-        else if($request->input('id_User'))
+        if($request->input('id_User'))
         {
             $this->validate($request, [
                 'id_User' => 'required',
@@ -197,6 +186,7 @@ class NV_BanVeController extends Controller
             $product->TenKhachHang = $request->input('TenKhachHang');
             $product->SDT = $request->input('SDT');
             $product->Code = Str::random(6);
+            $product->paymenting = 1;
             if($request->input('option_payment') == 'Cash')
             {
                 $product->TienCoc = 0;
@@ -241,6 +231,7 @@ class NV_BanVeController extends Controller
             $product->Email = $request->input('EmailNhap');
             $product->id_KhachHang = $user->khachhang->id;
             $product->Code = Str::random(6);
+            $product->paymenting = 1;
             if($request->input('option_payment') == 'Cash')
             {
                 $product->TienCoc = 0;
@@ -267,6 +258,7 @@ class NV_BanVeController extends Controller
             $product->SDT = $request->input('SDT');
             $product->Email = $request->input('EmailNhap');
             $product->Code = Str::random(6);
+            $product->paymenting = 1;
             if($request->input('option_payment') == 'Cash')
             {
                 $product->TienCoc = 0;
