@@ -18,9 +18,7 @@ class ThanhToanController extends Controller
             'option_payment' => 'required',
         ]);
         
-        // $nlcheckout= new NL_CheckOutV3('65115','7f736e67823b7280fa311cdfaa16c1d0','trannguyenloi99@gmail.com','https://www.nganluong.vn/checkout.api.nganluong.post.php');
-        // $nlcheckout= new NL_CheckOutV3('65102','7a0d37956e8fb395be2187af16f3365e','trannguyenloi99@gmail.com','https://www.nganluong.vn/checkout.api.nganluong.post.php');
-        $nlcheckout= new NL_CheckOutV3('36680','matkhauketnoi','trannguyenloi99@gmail.com','https://www.nganluong.vn/checkout.api.nganluong.post.php');
+        $nlcheckout= new NL_CheckOutV3('36680','matkhauketnoi','baolamcntt2017@gmail.com','https://www.nganluong.vn/checkout.api.nganluong.post.php');
         $total_amount = $request->input('total_amount');
         
         $array_items[0]= array('item_name1' => 'Product name',
@@ -90,8 +88,7 @@ class ThanhToanController extends Controller
         }
         else
         {
-            //$nlcheckout= new NL_CheckOutV3('65102','7a0d37956e8fb395be2187af16f3365e','trannguyenloi99@gmail.com','https://www.nganluong.vn/checkout.api.nganluong.post.php');
-            $nlcheckout= new NL_CheckOutV3('36680','matkhauketnoi','demo@nganluong.vn','https://www.nganluong.vn/checkout.api.nganluong.post.php');
+            $nlcheckout= new NL_CheckOutV3('36680','matkhauketnoi','baolamcntt2017@gmail.com','https://www.nganluong.vn/checkout.api.nganluong.post.php');
             $nl_result = $nlcheckout->GetTransactionDetail($_REQUEST['token']);
             
             if($nl_result){

@@ -523,7 +523,6 @@
 								<div class="row" v-if="NhapThongTin == 0 && ThanhToan == 0">
 									<div class="col-md-2"></div>
 									<div class="col-md-4" align="left">
-										{{ this.Listid }}
 										Ghế: <span v-for="ve in TongVe" :key="ve.id">{{ ve.Ghe }}</span>
 									</div>
 									<div class="col-md-3" align="right">
@@ -712,9 +711,9 @@ export default {
 		},
 		async PaymentCash(){
 			try {
-					this.PaymentSuccess = 1
-					this.totalTime = (2 * 60)
-					this.timer = setInterval(()=>this.countdown(), 1000)
+				this.PaymentSuccess = 1
+				this.totalTime = (2 * 60)
+				this.timer = setInterval(()=>this.countdown(), 1000)
 			} catch (error) {
 				this.error = error.response.data
 			}
@@ -769,6 +768,7 @@ export default {
 			this.TongTienDiscout = this.TongTienDiscout - this.TongTienDiscout*this.discount/100
 			this.GiaVeDiscount = this.listChuyen.GiaVe
 			this.GiaVeDiscount = this.GiaVeDiscount - this.GiaVeDiscount*this.discount/100
+			this.ThanhToan = 1
 		},
 		async ThanhToanUser(){
 			try {
