@@ -73,7 +73,7 @@ class ThanhToanController extends Controller
             foreach($ids as $id )
             {
                 $product = nv_banve::find($id);
-                if($product->paymenting == 1)
+                if($product->paymenting == 1 || $product->TenKhachHang)
                 {
                     return response()->json('fail', 201);
                 }

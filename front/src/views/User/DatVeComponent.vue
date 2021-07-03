@@ -18,7 +18,6 @@
 								<div class="row" v-else="">
 									<div class="col-md-12">
 										<h3 class="lable-h">Mien Dong Station</h3>
-										{{ this.ispaymenting }}
 									</div>
 								</div>
 								<div class="row" v-if="NhapThongTin == 0 && ThanhToan == 0">

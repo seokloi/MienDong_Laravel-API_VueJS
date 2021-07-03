@@ -16,7 +16,7 @@
 							<th>Ngày</th>
 							<th>Giờ</th>
 							<th>Giá Vé</th>
-							<th>Còn lại</th>
+							<th></th>
 							<th width="180px"></th>
 						</tr>
 					</thead>
@@ -26,7 +26,11 @@
 							<td>{{ product.Ngay | formatDay }}</td>
 							<td>{{ product.Gio }}</td>
 							<td>{{ product.GiaVe }}</td>
-							<td>{{ product.ConLai }}</td>
+							<td>
+								<p v-if="product.SoGhe">Số Ghế: {{ product.SoGhe }}</p>
+								<p v-if="product.DaDat">Đã đặt: {{ product.DaDat }}</p>
+								<p v-if="product.ConLai">Còn lại: {{ product.ConLai }}</p>
+							</td>
 							<td>
 								<router-link :to = "{ path: '/nhanvien-banve', query: {id_Chuyen: product.id , id_User: user.id, id_ChuXe: $route.query.id_ChuXe}} ">
 									<button class="btn btn-primary">Bán Vé</button>

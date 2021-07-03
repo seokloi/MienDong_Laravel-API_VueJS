@@ -11,7 +11,9 @@
 				</div>
 				<div class="col-md-3">
 				</div>
-				<div class="panel-body col-md-6">
+				<div class="panel-body col-md-6" v-if="success && !errors.name && !errors.email && !errors.password && !errors.NgaySinh && !errors.DiaChi && !errors.SDT">
+				</div>
+				<div class="panel-body col-md-6" v-else="">
 					<form role="form">
 						<div class="form-group">
 							<input type="text" class="form-control" :class="{ 'is-invalid': errors.name }" id="name" v-model="details.name" placeholder="Họ và tên" />
@@ -76,7 +78,8 @@ export default {
 		NgaySinh: '',
 		DiaChi: '',
 		SDT: ''
-      }
+      },
+	  success: null
     };
   },
 
@@ -91,10 +94,10 @@ export default {
   methods: {
     ...mapActions("auth", ["sendRegisterRequest"]),
 
-    register: function() {
-      this.sendRegisterRequest(this.details).then(() => {
+    register() {
+	  this.sendRegisterRequest(this.details).then(() => {
       });
-	  this.$router.push({ name: "Home" });
+	  this.success = 1
     }
   }
 };

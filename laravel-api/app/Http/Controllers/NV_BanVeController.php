@@ -172,9 +172,7 @@ class NV_BanVeController extends Controller
                 'id_User' => 'required',
                 'TenKhachHang' => 'required',
                 'SDT' => 'required',
-                'GiaVe' => 'required',
                 'TienCoc' => 'required|integer|gte:0',
-                'option_payment' => 'required',
             ]);
             $product = nv_banve::find($id);
             $user = user::findOrFail($request->input('id_User'));
@@ -186,15 +184,7 @@ class NV_BanVeController extends Controller
             $product->TenKhachHang = $request->input('TenKhachHang');
             $product->SDT = $request->input('SDT');
             $product->Code = Str::random(6);
-            $product->paymenting = 1;
-            if($request->input('option_payment') == 'Cash')
-            {
-                $product->TienCoc = 0;
-            }
-            else
-            {
-                $product->TienCoc = $request->input('TienCoc');
-            }
+            $product->TienCoc = $request->input('TienCoc');
             $product->save();
         }
         //Mua ve co dang nhap
