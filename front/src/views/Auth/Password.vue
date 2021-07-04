@@ -9,13 +9,6 @@
 						</h2>
 						<span>{{ user.name }}</span>
 					</div>
-					<div class="alert alert-danger" role="alert" v-if="errors.password">
-						{{ errors.password[0] }}
-					</div>
-					<div class="alert alert-danger" role="alert" v-if="errors.passwordAgain">
-						{{ errors.passwordAgain[0] }}
-					</div>
-
 				</div>
 				<div class="col-md-3">
 				</div>
@@ -26,9 +19,15 @@
 						</div>
 						<div class="form-group">
 							<input type="password" class="form-control password" v-model="details.password" placeholder="Mật khẩu mới"/>
+							<div class="alert alert-danger" v-if="errors.password">
+								{{ errors.password[0] }}
+							</div>
 						</div>
 						<div class="form-group">
 							<input type="password" class="form-control password" v-model="details.passwordAgain" placeholder="Nhập lại mật khẩu"/>
+							<div class="alert alert-danger" v-if="errors.passwordAgain">
+								{{ errors.passwordAgain[0] }}
+							</div>
 						</div>
 						<button type="button" @click="doimatkhau" class="btn btn-lg btn-primary btn-block">Thay đổi</button>
 					</form>
@@ -49,7 +48,9 @@ export default {
       details: {
         password: null,
 		passwordAgain: null
-      }
+      },
+	  success: null,
+	  error: null
     };
   },
 
@@ -64,17 +65,20 @@ export default {
 
   methods: {
 	async doimatkhau() {
-                try {
-                    await axios.post(process.env.VUE_APP_API_URL + 'password', {
-						id_User: this.$route.query.id_User,
-                        password: this.details.password,
-                        passwordAgain: this.details.passwordAgain
-                    })
-                    this.$router.push({ name: "Home" });
-                } catch (error) {
-                    this.error = error.response.data
-                }
-			},
+		try {
+			this.success = await axios.post(process.env.VUE_APP_API_URL + 'password', {
+				id_User: this.$route.query.id_User,
+				password: this.details.password,
+				passwordAgain: this.details.passwordAgain
+			})
+			if(this.success)
+			{
+				this.$router.push({ name: "Home" });
+			}
+		} catch (error) {
+			this.error = error.response.data
+		}
+	},
   }
 };
 </script>

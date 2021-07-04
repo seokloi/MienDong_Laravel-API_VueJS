@@ -45,12 +45,15 @@
 							<td>{{ product.GiaVe }}</td>
 							<td>{{ product.TienCoc }}</td>
 							<td>{{ product.updated_at | formatDate }}</td>
-                            <td v-if="product.paymenting == 0">
+                            <td v-if="product.paymenting == 1 && product.TienCoc != 0">
+                                PAYMENTED
 							</td>
-							<td v-else="">
+							<td v-else-if="product.paymenting == 1 && product.TienCoc == 0">
 								IS PAYMENTING...
 								<button class="btn btn-danger" @click="deleteProduct(product)">Cancel</button>
 							</td>
+                            <td v-else="">
+                            </td>
 						</tr>
 					</transition-group>
 				</table>
