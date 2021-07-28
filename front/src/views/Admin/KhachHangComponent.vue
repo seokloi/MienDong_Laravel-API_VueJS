@@ -88,7 +88,7 @@
 								<input v-model="product.SoLanMua" type="number" class="form-control" name="SoLanMua"  disabled=""/>
 							</td>
 							<td v-else="">
-								<input type="number" v-model="selectedProduct.SoLanMua" class="form-control"/>
+								<input type="number" v-model="selectedProduct.SoLanMua" class="form-control" disabled=""/>
 							</td>
 
 							<td v-if="!selectedProduct">

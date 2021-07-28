@@ -5,7 +5,7 @@ use App\Http\Resources\XeResource;
 use App\Http\Resources\XeCollection;
 use Illuminate\Http\Request;
 use App\xe;
-use App\user;
+use App\User;
 use App\chuxe;
 
 

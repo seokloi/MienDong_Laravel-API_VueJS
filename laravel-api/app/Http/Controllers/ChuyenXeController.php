@@ -144,7 +144,7 @@ class ChuyenXeController extends Controller
             $this->validate($request, [
                 'id_Xe' => 'required|integer|gt:0',
                 'id_BenXe' => 'required|integer|gt:0',
-                'DayInMonth' => 'required|between:0,32',
+                'DayInMonth' => 'required|gt:0|lt:32',
                 'Gio' => 'required',
                 'GiaVe' => 'required|integer|gt:0',
             ]);

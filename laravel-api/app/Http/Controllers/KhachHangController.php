@@ -82,8 +82,8 @@ class KhachHangController extends Controller
     {
         $product = khachhang::find($id);
         $user = User::find($product->id_User);
-        $user->delete();
         $product->delete();
+        $user->delete();
         return response(['result' => 'success'], 200);
     }
 }

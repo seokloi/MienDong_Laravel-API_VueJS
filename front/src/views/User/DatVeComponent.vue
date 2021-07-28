@@ -522,6 +522,7 @@
 								<div class="row" v-if="NhapThongTin == 0 && ThanhToan == 0">
 									<div class="col-md-2"></div>
 									<div class="col-md-4" align="left">
+										Số Lượng: {{ this.CountVe }}
 										Ghế: <span v-for="ve in TongVe" :key="ve.id">{{ ve.Ghe }}</span>
 									</div>
 									<div class="col-md-3" align="right">
@@ -583,8 +584,64 @@
                                     </div>
 									<div class="col-md-12" v-else="">
 										<h5>
-											Hoàn tất thủ tục. Cảm ơn bạn đã lựa chọn chúng tôi.
+											Hoàn tất thủ tục. Thông tin chi tiết vé đã gửi qua gmail.
 										</h5>
+										<table style="background-color:white; color: black">
+											<tr style="color:blue">
+												<td style="text-align:center">CÔNG TY TNHH MỘT THÀNH VIÊN<br/> BẾN XE MIỀN ĐÔNG</td>
+												<td colspan="2"></td>
+											</tr>
+											<tr style="color:blue">
+												<td style="text-align:center">292 Đinh Bộ Lĩnh, P.26, Q.Bình Thạnh<br/>Điện thoại: 35116858 - Fax: 38992094<br/>Mã số thuế: 0301092597</td>
+												<td style="text-align:center">Số vé 0{{ this.CountVe }}</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td colspan="3" style="text-align:center; color:red"><h4>PHIẾU ĐẶT CHỖ</h4></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td v-if="this.option_payment == 'Cash'">(Chưa thanh toán)</td>
+												<td v-else="">(Đã thanh toán)</td>
+												<td>VX260002 0620201114</td>
+											</tr>
+											<tr>
+												<td colspan="3">Đơn vị vân tải: {{ this.listChuyen.ChuXe }}</td>
+											</tr>
+											<tr>
+												<td  v-if="user">
+													Số Xe: {{ this.listChuyen.BienSo }} <br/>
+													Loại Xe: {{ this.listChuyen.LoaiXe }} - {{ this.listChuyen.SoGhe }} Ghế<br/>
+													Ngày Đi: {{ this.listChuyen.Ngay }} <br/>
+													Giá Vé: {{ this.TongTienDiscount }} <br/>
+													Địa Điểm Đi: {{ this.listChuyen.DiaDiem1 }}
+												</td>
+												<td  v-else="">
+													Số Xe: {{ this.listChuyen.BienSo }} <br/>
+													Loại Xe: {{ this.listChuyen.LoaiXe }} - {{ this.listChuyen.SoGhe }} Ghế<br/>
+													Ngày Đi: {{ this.listChuyen.Ngay | formatDay }} <br/>
+													Giá Vé: {{ this.TongTien }} <br/>
+													Địa Điểm Đi: {{ this.listChuyen.DiaDiem1 }}
+												</td>
+												<td>
+													Số Chỗ: {{ this.CountVe }} <br/> <br/>
+													Giờ Đi: {{ this.listChuyen.Gio }} <br/> <br/>
+													Địa Điểm Trả: {{ this.listChuyen.DiaDiem2 }}
+												</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td>(Bao gồm thuế GTVT và BHHK)</td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td colspan="3">
+												+Thanh toán tối thiểu 90% tiền vé cho hành khách đã mua vé nhưng từ chối chuyến đi trước ki xe khởi hành ít nhất 02 giờ đối với tuyến cố định có cự ly từ 300km trở xuống và ít nhất 04 giờ đối với tuyến cố định có cự ly trên 300km.
+												<br/>+Thanh toán tối thiểu 70% tiền vé cho hành khách đã mua vé nhưng từ chối chuyến đi trước khi xe khởi hành ít nhất 01 giờ đối với tuyến cố định có cự ly từ 300km trở xuống và ít nhất 02 giờ đối với tuyến cố định có cự ly trên 300km.
+												</td>
+											</tr>
+										</table>
                                     </div>
 								</div>
 							</div>
@@ -631,13 +688,14 @@ export default {
 		TongTienDiscount: 0,
 		GiaVeDiscount: 0,
 		TongVe: [],
+		CountVe: 0,
 		Listid: [],
 		listChuyen: null,
 		ListVes: null,
 		success: null,
 		error: null,
 		timer: null,
-		totalTime: (5 * 60),
+		totalTime: (10 * 60),
 		ispaymenting: 0
 		};
 	},
@@ -673,7 +731,12 @@ export default {
 			try {
 				const response = await axios.get(process.env.VUE_APP_API_URL + 'thanhtoan', {
 					params: {
-						token: this.token
+						token: this.token,
+						buyer_mobile: this.khachhang.sdt,
+						param1: this.listChuyen.DiaDiem1,
+						param2: this.listChuyen.DiaDiem2,
+						param4: this.listChuyen.Ngay
+
 					}
 				})
 				this.Mess = response.data
@@ -726,7 +789,10 @@ export default {
 					buyer_mobile: this.khachhang.sdt,
 					total_amount: this.TongTienDiscout,
 					option_payment: this.option_payment,
-					bankcode: this.bankcode
+					bankcode: this.bankcode,
+					param1: this.listChuyen.DiaDiem1,
+					param2: this.listChuyen.DiaDiem2,
+					param4: this.listChuyen.Ngay
 				})
 				this.token = response.data.token
 				this.PaymentSuccess = 1
@@ -745,7 +811,10 @@ export default {
 					buyer_mobile: this.khachhang.sdt,
 					total_amount: this.TongTien,
 					option_payment: this.option_payment,
-					bankcode: this.bankcode
+					bankcode: this.bankcode,
+					param1: this.listChuyen.DiaDiem1,
+					param2: this.listChuyen.DiaDiem2,
+					param4: this.listChuyen.Ngay
 				})
 				this.token = response.data.token
 				this.PaymentSuccess = 1
@@ -779,7 +848,8 @@ export default {
 						EmailNhap: this.khachhang.EmailNhap,
 						GiaVe: this.listChuyen.GiaVe,
 						TienCoc: this.GiaVeDiscount,
-						option_payment: this.option_payment
+						option_payment: this.option_payment,
+						CountVe: this.CountVe
 					})
 				})
 			} catch (error) {
@@ -797,7 +867,8 @@ export default {
 						EmailNhap: this.khachhang.EmailNhap,
 						GiaVe: this.listChuyen.GiaVe,
 						TienCoc: this.listChuyen.GiaVe,
-						option_payment: this.option_payment
+						option_payment: this.option_payment,
+						CountVe: this.CountVe
 					})
 				})
 			} catch (error) {
@@ -821,12 +892,14 @@ export default {
 			this.TongTien += this.listChuyen.GiaVe
 			this.TongVe.push(ve)
 			this.Listid.push(ve.id)
+			this.CountVe++
         },
 		async UnSelect(ve) {
 			ve.isSelect = false
 			this.TongTien -= this.listChuyen.GiaVe
 			this.TongVe.splice(this.TongVe.indexOf(ve), 1)
 			this.Listid.splice(this.TongVe.indexOf(ve.id), 1)
+			this.CountVe--
         },
 		async getListChuyen() {
 			try {

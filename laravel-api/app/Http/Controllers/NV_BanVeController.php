@@ -222,16 +222,76 @@ class NV_BanVeController extends Controller
             $product->id_KhachHang = $user->khachhang->id;
             $product->Code = Str::random(6);
             $product->paymenting = 1;
+
+            $message = '<table style="background-color:white; color: black" width="700px">
+                            <tr style="color:blue">
+                                <td style="text-align:center">CÔNG TY TNHH MỘT THÀNH VIÊN<br/> BẾN XE MIỀN ĐÔNG</td>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr style="color:blue">
+                                <td style="text-align:center">292 Đinh Bộ Lĩnh, P.26, Q.Bình Thạnh<br/>Điện thoại: 35116858 - Fax: 38992094<br/>Mã số thuế: 0301092597</td>
+                                <td style="text-align:center">Số vé 0'.$request->input('CountVe').'</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="text-align:center; color:red"><h4>PHIẾU ĐẶT CHỖ</h4></td>
+                            </tr>
+                            <tr>
+                                <td></td>';
+
             if($request->input('option_payment') == 'Cash')
             {
                 $product->TienCoc = 0;
+                $message .= '<td>(Chưa thanh toán)</td>';
             }
             else
             {
                 $product->TienCoc = $request->input('TienCoc');
+                $message .= '<td>(Đã thanh toán)</td>';
             }
 
             $product->save();
+            $message .= '
+                                <td>VX260002 0620201114</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Đơn vị vân tải: '.$product->chuyenxe->xe->chuxe->Ten.'</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Số Xe: '.$product->chuyenxe->xe->BienSo.' <br/>
+                                    Loại Xe: '.$product->chuyenxe->xe->loaixe->Ten.' - '.$product->chuyenxe->xe->loaixe->SoGhe.' Ghế<br/>
+                                    Ngày Đi: '.$product->chuyenxe->Ngay.' <br/>
+                                    Giá Vé: '.$product->chuyenxe->GiaVe.' <br/>
+                                    Địa Điểm Đi: '.$product->chuyenxe->benxe->tuyen->DiaDiem1.'
+                                </td>
+                                <td>
+                                    Số Ghế: '.$product->Ghe.' <br/> <br/>
+                                    Giờ Đi: '.$product->chuyenxe->Gio.' <br/> <br/>
+                                    Địa Điểm Trả: '.$product->chuyenxe->benxe->tuyen->DiaDiem1.'
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>(Bao gồm thuế GTVT và BHHK)</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                +Thanh toán tối thiểu 90% tiền vé cho hành khách đã mua vé nhưng từ chối chuyến đi trước ki xe khởi hành ít nhất 02 giờ đối với tuyến cố định có cự ly từ 300km trở xuống và ít nhất 04 giờ đối với tuyến cố định có cự ly trên 300km.
+                                <br/>+Thanh toán tối thiểu 70% tiền vé cho hành khách đã mua vé nhưng từ chối chuyến đi trước khi xe khởi hành ít nhất 01 giờ đối với tuyến cố định có cự ly từ 300km trở xuống và ít nhất 02 giờ đối với tuyến cố định có cự ly trên 300km.
+                                </td>
+                            </tr>
+                        </table>';
+            $to      = "trannguyenloi99@gmail.com";
+            $subject = "Thông tin vé Bến Xe Miền Đông";
+            $header  =  "From:miendong@d2439.tino.org \r\n";
+            
+            $header .= "MIME-Version: 1.0\r\n";
+            $header .= "Content-type: text/html\r\n";
+
+            $success = mail ($to,$subject,$message,$header);
         }
         //Mua ve khong dang nhap
         else
@@ -249,16 +309,76 @@ class NV_BanVeController extends Controller
             $product->Email = $request->input('EmailNhap');
             $product->Code = Str::random(6);
             $product->paymenting = 1;
+
+            $message = '<table style="background-color:white; color: black" width="700px">
+                            <tr style="color:blue">
+                                <td style="text-align:center">CÔNG TY TNHH MỘT THÀNH VIÊN<br/> BẾN XE MIỀN ĐÔNG</td>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr style="color:blue">
+                                <td style="text-align:center">292 Đinh Bộ Lĩnh, P.26, Q.Bình Thạnh<br/>Điện thoại: 35116858 - Fax: 38992094<br/>Mã số thuế: 0301092597</td>
+                                <td style="text-align:center">Số vé 0'.$request->input('CountVe').'</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="text-align:center; color:red"><h4>PHIẾU ĐẶT CHỖ</h4></td>
+                            </tr>
+                            <tr>
+                                <td></td>';
+
             if($request->input('option_payment') == 'Cash')
             {
                 $product->TienCoc = 0;
+                $message .= '<td>(Chưa thanh toán)</td>';
             }
             else
             {
                 $product->TienCoc = $request->input('TienCoc');
+                $message .= '<td>(Đã thanh toán)</td>';
             }
 
             $product->save();
+            $message .= '
+                                <td>VX260002 0620201114</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Đơn vị vân tải: '.$product->chuyenxe->xe->chuxe->Ten.'</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Số Xe: '.$product->chuyenxe->xe->BienSo.' <br/>
+                                    Loại Xe: '.$product->chuyenxe->xe->loaixe->Ten.' - '.$product->chuyenxe->xe->loaixe->SoGhe.' Ghế<br/>
+                                    Ngày Đi: '.$product->chuyenxe->Ngay.' <br/>
+                                    Giá Vé: '.$product->chuyenxe->GiaVe.' <br/>
+                                    Địa Điểm Đi: '.$product->chuyenxe->benxe->tuyen->DiaDiem1.'
+                                </td>
+                                <td>
+                                    Số Ghế: '.$product->Ghe.' <br/> <br/>
+                                    Giờ Đi: '.$product->chuyenxe->Gio.' <br/> <br/>
+                                    Địa Điểm Trả: '.$product->chuyenxe->benxe->tuyen->DiaDiem1.'
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>(Bao gồm thuế GTVT và BHHK)</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                +Thanh toán tối thiểu 90% tiền vé cho hành khách đã mua vé nhưng từ chối chuyến đi trước ki xe khởi hành ít nhất 02 giờ đối với tuyến cố định có cự ly từ 300km trở xuống và ít nhất 04 giờ đối với tuyến cố định có cự ly trên 300km.
+                                <br/>+Thanh toán tối thiểu 70% tiền vé cho hành khách đã mua vé nhưng từ chối chuyến đi trước khi xe khởi hành ít nhất 01 giờ đối với tuyến cố định có cự ly từ 300km trở xuống và ít nhất 02 giờ đối với tuyến cố định có cự ly trên 300km.
+                                </td>
+                            </tr>
+                        </table>';
+            $to      = "trannguyenloi99@gmail.com";
+            $subject = "Thông tin vé Bến Xe Miền Đông";
+            $header  =  "From:miendong@d2439.tino.org \r\n";
+            
+            $header .= "MIME-Version: 1.0\r\n";
+            $header .= "Content-type: text/html\r\n";
+
+            $success = mail ($to,$subject,$message,$header);
         }
 
         return response()->json($product, 201);

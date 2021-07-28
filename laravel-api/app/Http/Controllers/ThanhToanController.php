@@ -58,8 +58,26 @@ class ThanhToanController extends Controller
             }
             //var_dump($nl_result); die;
             if ($nl_result->error_code =='00'){
+                $APIKey = "2FACDBA8BB4AFEF9744A78CF268BFD";
+                $SecretKey = "8F599465A7738ED0A047D3E2FC7118";
+
+                $YourPhone = $request->input('buyer_mobile');
+                $param1 = $request->input('param1');
+                $param2 = $request->input('param2');
+                $param3 = $order_code;
+                $param4 = $request->input('param4');
+
+                $Content="Ben xe mien dong chuc mung quy khach da dang ky thanh cong ve di tu ".$param1." den ".$param2.", ma ve ".$param3.",ngay di ".$param4.",vui long thanh toan trong vong 10 phut,so dien thoai lien he 0908290030";
                 
-            //Cập nhât order với token  $nl_result->token để sử dụng check hoàn thành sau này
+                $SendContent=urlencode($Content);
+                $data="http://rest.esms.vn/MainService.svc/json/SendMultipleMessage_V4_get?Phone=$YourPhone&ApiKey=$APIKey&SecretKey=$SecretKey&Content=$SendContent&SmsType=8"; 
+                
+                $curl = curl_init($data); 
+                curl_setopt($curl, CURLOPT_FAILONERROR, true); 
+                curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true); 
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); 
+                $result = curl_exec($curl);
+                //Cập nhât order với token  $nl_result->token để sử dụng check hoàn thành sau này
             }
             return response()->json($nl_result, 201);
         }
@@ -90,12 +108,31 @@ class ThanhToanController extends Controller
         {
             $nlcheckout= new NL_CheckOutV3('36680','matkhauketnoi','baolamcntt2017@gmail.com','https://www.nganluong.vn/checkout.api.nganluong.post.php');
             $nl_result = $nlcheckout->GetTransactionDetail($_REQUEST['token']);
-            
             if($nl_result){
                 $nl_errorcode           = (string)$nl_result->error_code;
                 $nl_transaction_status  = (string)$nl_result->transaction_status;
                 if($nl_errorcode == '00') {
                     if($nl_transaction_status == '00') {
+                        $APIKey = "2FACDBA8BB4AFEF9744A78CF268BFD";
+                        $SecretKey = "8F599465A7738ED0A047D3E2FC7118";
+
+                        $YourPhone = $_REQUEST['buyer_mobile'];
+                        $param1 = $_REQUEST['param1'];
+                        $param2 = $_REQUEST['param2'];
+                        $param3 = (string)$nl_result->order_code;
+                        $param4 = $_REQUEST['param4'];
+
+                        $Content="Ben xe mien dong chuc mung quy khach da thanh toan thanh cong ve di tu ".$param1." den ".$param2.", ma ve ".$param3." ngày di ".$param4.",vui long có mat tai dia diem doan truoc 30 phut,so dien thoai lien he 0908290030";
+                        
+                        $SendContent=urlencode($Content);
+                        $data="http://rest.esms.vn/MainService.svc/json/SendMultipleMessage_V4_get?Phone=$YourPhone&ApiKey=$APIKey&SecretKey=$SecretKey&Content=$SendContent&SmsType=8"; 
+
+                        $curl = curl_init($data); 
+                        curl_setopt($curl, CURLOPT_FAILONERROR, true); 
+                        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true); 
+                        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); 
+                        $result = curl_exec($curl);
+
                         return response()->json('Đơn hàng đã thanh toán thành công. Hãy xác nhận thanh toán để hoàn tất.', 201);
                     }
                 }else{

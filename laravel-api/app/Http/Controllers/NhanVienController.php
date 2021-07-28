@@ -86,8 +86,8 @@ class NhanVienController extends Controller
     {
         $product = nhanvien::find($id);
         $user = User::find($product->id_User);
-        $user->delete();
         $product->delete();
+        $user->delete();
         return response(['result' => 'success'], 200);
     }
 }
