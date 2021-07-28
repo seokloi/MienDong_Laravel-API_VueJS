@@ -522,7 +522,7 @@
 								<div class="row" v-if="NhapThongTin == 0 && ThanhToan == 0">
 									<div class="col-md-2"></div>
 									<div class="col-md-4" align="left">
-										Số Lượng: {{ this.CountVe }}
+										Số Lượng: {{ this.CountVe }} <br/>
 										Ghế: <span v-for="ve in TongVe" :key="ve.id">{{ ve.Ghe }}</span>
 									</div>
 									<div class="col-md-3" align="right">
